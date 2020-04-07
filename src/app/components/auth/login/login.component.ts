@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public authService: AuthService,
-    public router: Router
+    public router: Router,
+    public tokenService: TokenService
   ) { }
 
   ngOnInit(): void {
@@ -31,7 +33,8 @@ export class LoginComponent implements OnInit {
 
     login() {
       this.loader = true
-      this.authService.login(this.loginForm.value).subscribe(res => {
+      this.authService.login(this.loginForm.value).subscribe((res: any) => {
+        this.tokenService.setToken(res.token)
         setTimeout(() => {
             this.router.navigate(['/streams'])
         }, 2000)

@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './modules/auth.module';
 import { AppRoutingModule } from './app.routing';
 import { StreamsModule } from './modules/streams.module';
+import {CookieService} from 'ngx-cookie-service'
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { StreamsModule } from './modules/streams.module';
     AppRoutingModule,
     StreamsModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
