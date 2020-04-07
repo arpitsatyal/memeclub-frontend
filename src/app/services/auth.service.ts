@@ -11,6 +11,9 @@ export class AuthService extends BaseService {
     constructor(private http: HttpClient) {
         super('auth')
     }
+    login(user) {
+        return this.http.post(this.url + 'login', user, this.setUpHeaders())
+    }
     register(user) {
         return this.http.post(this.url + 'register', user, this.setUpHeaders())
     }

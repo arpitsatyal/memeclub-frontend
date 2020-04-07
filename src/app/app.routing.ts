@@ -3,7 +3,10 @@ import {Routes, RouterModule } from '@angular/router'
 
 let routes: Routes = [
     {
-        path: '', loadChildren: './modules/auth/auth.module#AuthModule'
+        path: '', loadChildren: './modules/auth.module#AuthModule'
+    },
+    {
+        path: 'streams', loadChildren: './modules/streams.module#StreamsModule'
     }
 ]
 
