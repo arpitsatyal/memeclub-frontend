@@ -6,12 +6,19 @@ export class BaseService {
     constructor(postfixUrl) {
         this.url = environment.backendUrl + postfixUrl + '/'
     }
-
-    setUpHeaders() {
+    setUpHeaders(token) {
        return {
            headers: new HttpHeaders({
-               'Content-Type': 'application/json'
+               'Content-Type': 'application/json',
+               'Authorization': `Bearer ${token}`
            })
        }
 } 
+ HeadersWithOutToken() {
+        return {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+            })
+       }
+}
 }

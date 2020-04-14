@@ -12,9 +12,9 @@ export class AuthService extends BaseService {
         super('auth')
     }
     login(user) {
-        return this.http.post(this.url + 'login', user, this.setUpHeaders())
+        return this.http.post(this.url + 'login', user, this.HeadersWithOutToken())
     }
     register(user) {
-        return this.http.post(this.url + 'register', user, this.setUpHeaders())
+        return this.http.post(this.url + 'register', user, this.HeadersWithOutToken())
     }
 } 

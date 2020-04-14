@@ -6,7 +6,10 @@ import { TokenService } from '../services/token.service';
 import { ToolbarComponent } from '../components/toolbar/toolbar.component';
 import { SidebarComponent } from '../components/sidebar/sidebar.component';
 import { PostsComponent } from '../components/posts/posts.component';
-import { PostsFormComponent } from '../components/posts-form/posts-form.component';
+import { PostsFormComponent } from '../components/posts/posts-form/posts-form.component';
+import { PostService } from '../services/post.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,8 +21,11 @@ import { PostsFormComponent } from '../components/posts-form/posts-form.componen
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     StreamsRoutingModule
   ],
-  providers: [TokenService]
+  providers: [TokenService, PostService]
 })
 export class StreamsModule { }
