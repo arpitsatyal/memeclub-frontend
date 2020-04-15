@@ -20,4 +20,14 @@ export class TokenService {
     deleteToken() {
         return this.cookieService.delete('token')
     }
+    GetPayload() {
+        let token =  this.getToken()
+        let payload 
+        if(token) {
+            payload = token.split('.')[1]
+            payload = JSON.parse(window.atob(payload))
+            // atob used to decrypt the data
+        }
+        return payload.user
+    }
 }

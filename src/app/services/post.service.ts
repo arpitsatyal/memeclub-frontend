@@ -17,4 +17,10 @@ url
   createPost(post) {
     return this.http.post(this.url + 'add-post', post, this.setUpHeaders(this.tokenService.getToken()))
   }
+  getAllPosts() {
+    return this.http.get(this.url + 'posts')
+  }
+  addLike(id) {
+    return this.http.post(this.url + 'add-like',id , this.setUpHeaders(this.tokenService.getToken()))
+  }
 }
