@@ -10,6 +10,7 @@ import { PostsFormComponent } from '../components/posts/posts-form/posts-form.co
 import { PostService } from '../services/post.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CommentsComponent } from '../components/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     ToolbarComponent,
     SidebarComponent,
     PostsComponent,
-    PostsFormComponent
+    PostsFormComponent,
+    CommentsComponent
   ],
   imports: [
     CommonModule,

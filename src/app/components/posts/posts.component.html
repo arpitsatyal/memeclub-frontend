@@ -1,4 +1,4 @@
-<ul class="collection" *ngFor="let post of posts">
+<ul class="collection col s12 m12 l10" *ngFor="let post of posts">
     <li class="collection-item avatar">
       <img src="" alt="" class="circle">
       <span class="title">{{post.username}}</span>
@@ -17,11 +17,12 @@
                     <p>{{post.post}}</p>
                 </div>
                 <div class="card-action">
-                    <i (click)="like(post)" class="material-icons">thumb_up</i>
+                    <i [ngClass]="(!checkInLikesArray(post.likes, user.username)) ? 'notLiked' : 'liked'" 
+                    (click)="like(post)" class="material-icons">thumb_up</i>
                     <span clas="iconSpan">
                         {{post.totalLikes}}
                     </span>
-                    <i class="material-icons">chat</i>
+                    <i class="material-icons" routerLink="post/{{post._id}}">chat</i>
                     <span clas="iconSpan">
                         {{post.comments.length}}
                     </span>
