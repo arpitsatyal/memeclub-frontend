@@ -26,4 +26,7 @@ url
   addComment(comment, postId) {
     return this.http.post(this.url + 'add-comment/' + postId ,comment, this.setUpHeaders(this.tokenService.getToken()))
   }
+    getPost(postId) {
+    return this.http.get(this.url + 'post/' + postId , this.setUpHeaders(this.tokenService.getToken()))
+  }
 }

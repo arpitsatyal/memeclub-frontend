@@ -22,7 +22,8 @@
                     <span clas="iconSpan">
                         {{post.totalLikes}}
                     </span>
-                    <i class="material-icons" routerLink="post/{{post._id}}">chat</i>
+                    <i class="material-icons" [ngClass]="(!checkInLikesArray(post.comments, user.username)) ? 'notLiked' : 'liked'"
+                     routerLink="post/{{post._id}}">chat</i>
                     <span clas="iconSpan">
                         {{post.comments.length}}
                     </span>

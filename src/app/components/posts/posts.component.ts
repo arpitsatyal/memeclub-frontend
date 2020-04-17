@@ -5,7 +5,6 @@ import io from 'socket.io-client'
 import { environment } from 'src/environments/environment';
 import _ from 'lodash'
 import { TokenService } from 'src/app/services/token.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-posts',
@@ -18,8 +17,7 @@ export class PostsComponent implements OnInit {
   user
   constructor(
     private postService: PostService,
-    private tokenService: TokenService,
-    // private router: Router
+    private tokenService: TokenService
   ) { 
     this.socket = io(environment.server)
   }
@@ -40,9 +38,7 @@ export class PostsComponent implements OnInit {
     return moment(time).fromNow()
   }
   like(post) {
-    this.postService.addLike(post).subscribe(res => {
-      this.socket.emit('refresh', {})
-    }, err => console.log(err))
+    this.postService.addLike(post).subscribe(() =>  this.socket.emit('refresh', {}), err => console.log(err))
   }
   checkInLikesArray(arr, username) {
     return _.some(arr, { username })

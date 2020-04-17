@@ -3,6 +3,7 @@ import { Routes,RouterModule } from '@angular/router';
 import { StreamsComponent } from '../components/streams/streams.component'
 import { AuthGuard } from '../services/auth.guard';
 import { CommentsComponent } from '../components/comments/comments.component';
+import { UsersComponent } from '../components/users/users.component';
 
 let routes:Routes = [
   {
@@ -12,6 +13,11 @@ let routes:Routes = [
   },  {
     path: 'post/:id',
     component: CommentsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
     canActivate: [AuthGuard]
   }
 ]
