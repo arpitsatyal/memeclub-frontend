@@ -18,4 +18,13 @@ export class UserService extends BaseService {
     getAllUsers() {
         return this.http.get(this.url + 'get-users', this.setUpHeaders(this.tokenSerivce.getToken()))
     }
+    follow(userFollowed) {
+        return this.http.post(this.url + 'follow/',userFollowed, this.setUpHeaders(this.tokenSerivce.getToken()))
+    }
+    getUserById(id) {
+        return this.http.get(this.url + 'get-user/' + id, this.setUpHeaders(this.tokenSerivce.getToken()))       
+    }
+    getUserByName(username) {
+        return this.http.get(this.url + 'get-user/' + username, this.setUpHeaders(this.tokenSerivce.getToken()))       
+    }
 }

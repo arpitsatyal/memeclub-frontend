@@ -15,10 +15,14 @@
                     </a>
                     <div class="card-action">
                         <h3 class="card-title">
-                           {{ user.username}}
+                           {{user.username}}
                         </h3>
                         <p>country</p>
-                        <button class="btn">follow</button>
+                        <button class="btn" *ngIf="!checkInArray(arr, user._id)"
+                         (click)="follow(user)" >follow</button>
+
+                        <button class="btn disabled" *ngIf="checkInArray(arr, user._id)" >followed</button>
+
                         <a  class="secondary-content">
                             <i class="material-icons">chat</i>
                         </a>
