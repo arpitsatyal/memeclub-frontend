@@ -39,17 +39,15 @@ export class UsersComponent implements OnInit {
   }
 
   GetUsersById() {
-    this.userService.getUserById(this.me._id).subscribe((data: any) => {
-      console.log(data)
-      this.arr = data.following })
+    this.userService.getUserById(this.me._id).subscribe((data: any) => this.arr = data.following, err => console.log(err) )
   }
 
   follow(userman) {
-    this.userService.follow(userman).subscribe(() => this.socket.emit('refresh', {}) )
+    this.userService.follow(userman).subscribe(() => this.socket.emit('refresh', {}), err => console.log(err) )
   }
 
  checkInArray(arr, id) {
-   let result = _.find(arr, ['userFollowed', id])
+   let result = _.find(arr, ['userFollowed._id', id])
    if(result) return true
      return false
  }

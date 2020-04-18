@@ -4,6 +4,9 @@ import { StreamsComponent } from '../components/streams/streams.component'
 import { AuthGuard } from '../services/auth.guard';
 import { CommentsComponent } from '../components/comments/comments.component';
 import { UsersComponent } from '../components/users/users.component';
+import { FollowingComponent } from '../components/following/following.component';
+import { followersComponent } from '../components/followers/followers.component';
+
 
 let routes:Routes = [
   {
@@ -18,6 +21,16 @@ let routes:Routes = [
   {
     path: 'users',
     component: UsersComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'users/following',
+    component: FollowingComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'users/followers',
+    component: followersComponent,
     canActivate: [AuthGuard]
   }
 ]
