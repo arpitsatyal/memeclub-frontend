@@ -26,7 +26,15 @@ export class FollowingComponent implements OnInit {
     }
 
     GetUser() {
-        this.userService.getUserById(this.user._id).subscribe((res: any) => this.following = res.following, err => console.log(err))
+        this.userService.getUserById(this.user._id).subscribe((res: any) => {
+         res.following.forEach(f => {
+             if(f.userFollowed === null)  delete f.userFollowed
+             if(f.userFollowed === null && res.following.length <= 1)  res.following = []
+             this.following = res.following
+         })  
+        }
+        ,
+         err => console.log(err))
     }
     unFollow(user) {
         this.userService.Unfollow(user).subscribe(() => this.socket.emit('refresh', {}), err => console.log(err))

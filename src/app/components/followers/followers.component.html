@@ -4,8 +4,9 @@
         <div class="col s12 m4 l3">
             <app-sidebar></app-sidebar>
         </div>
-        <div class="col s12 m8 l9">
-         <div class="row" *ngIf="followers.length">
+        <div *ngIf="!followers.length">you dont have followers yet..</div>
+        <div class="col s12 m8 l9" *ngIf="followers.length > 0">
+         <div class="row">
             <div class="col s12 m6 l4 cardDiv" *ngFor="let user of followers">
                 <div class="card">
                     <a>
@@ -18,7 +19,7 @@
                             {{user.follower.username}}
                         </h3>
                         <p>country</p>
-                        <button class="btn" (click)="Follow(user)" >Unfollow</button>
+                      
                     </div>
                 </div>
             </div>    

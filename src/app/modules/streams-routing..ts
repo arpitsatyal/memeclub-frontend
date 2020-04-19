@@ -6,6 +6,7 @@ import { CommentsComponent } from '../components/comments/comments.component';
 import { UsersComponent } from '../components/users/users.component';
 import { FollowingComponent } from '../components/following/following.component';
 import { followersComponent } from '../components/followers/followers.component';
+import { NotificationsComponent } from '../components/notifications/notifications.component';
 
 
 let routes:Routes = [
@@ -31,6 +32,11 @@ let routes:Routes = [
   {
     path: 'users/followers',
     component: followersComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'users/notifications',
+    component: NotificationsComponent,
     canActivate: [AuthGuard]
   }
 ]

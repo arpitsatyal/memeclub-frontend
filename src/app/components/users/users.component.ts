@@ -39,7 +39,10 @@ export class UsersComponent implements OnInit {
   }
 
   GetUsersById() {
-    this.userService.getUserById(this.me._id).subscribe((data: any) => this.arr = data.following, err => console.log(err) )
+    this.userService.getUserById(this.me._id).subscribe((data: any) => {
+      if(data.following.length) this.arr = data.following
+    },
+     err => console.log(err))
   }
 
   follow(userman) {

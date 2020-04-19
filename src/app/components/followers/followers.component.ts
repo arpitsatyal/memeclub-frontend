@@ -10,8 +10,9 @@ import { environment } from 'src/environments/environment';
 })
 
 export class followersComponent implements OnInit {
-  followers = []
+  followers = [] 
   user
+  following = [] 
   socket
   constructor(
     private tokenService: TokenService,
@@ -23,12 +24,20 @@ export class followersComponent implements OnInit {
     this.user = this.tokenService.GetPayload()
     this.GetUser()
     this.socket.on('refreshPage', () => this.GetUser())
+ 
   }
 
   GetUser() {
-    this.userService.getUserById(this.user._id).subscribe((res: any) => this.followers = res.followers)
+    this.userService.getUserById(this.user._id).subscribe((res: any) => {
+      if(res.followers.length) this.followers = res.followers
+      if(res.following.length) this.following = res.following   
+    })
   }
-  Follow(user) {
-    this.userService.follow(user).subscribe(() => this.socket.emit('refresh', {}), err => console.log(err))
-  }
+  unFollow(user) {
+    this.userService.Unfollow(user).subscribe(() => this.socket.emit('refresh', {}), err => console.log(err))
+}
+Follow(user) {
+  this.userService.follow(user).subscribe(() => this.socket.emit('refresh', {}), err => console.log(err))
+}
+
 }

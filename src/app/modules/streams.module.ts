@@ -15,7 +15,8 @@ import { RouterModule } from '@angular/router';
 import { UsersComponent } from '../components/users/users.component';
 import { UserService } from '../services/user.service';
 import { followersComponent } from '../components/followers/followers.component';
-import {FollowingComponent  } from '../components/following/following.component'
+import {FollowingComponent  } from '../components/following/following.component';
+import { NotificationsComponent } from '../components/notifications/notifications.component'
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {FollowingComponent  } from '../components/following/following.component'
     CommentsComponent,
     UsersComponent,
     followersComponent,
-    FollowingComponent
+    FollowingComponent,
+    NotificationsComponent
   ],
   imports: [
     CommonModule,
