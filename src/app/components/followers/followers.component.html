@@ -19,7 +19,8 @@
                             {{user.follower.username}}
                         </h3>
                         <p>country</p>
-                      
+                        <button class="btn" (click)="Follow(user)" *ngIf="!hasFollowedMe">follow</button>
+                        <button class="btn" (click)="unFollow(user)" *ngIf="hasFollowedMe">Unfollow</button>
                     </div>
                 </div>
             </div>    
@@ -27,3 +28,4 @@
         </div>
     </div>
 </div>
+

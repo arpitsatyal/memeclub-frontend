@@ -21,6 +21,12 @@ export class UserService extends BaseService {
     follow(userFollowed) {
         return this.http.post(this.url + 'follow/',userFollowed, this.setUpHeaders(this.tokenSerivce.getToken()))
     }
+    followFollowing(userFollowed) {
+        return this.http.post(this.url + 'followFollowing/',userFollowed, this.setUpHeaders(this.tokenSerivce.getToken()))
+    }
+    UnfollowFollowing(userFollowed) {
+        return this.http.post(this.url + 'UnfollowFollowing/',userFollowed, this.setUpHeaders(this.tokenSerivce.getToken()))
+    }
     Unfollow(userUnfollowed) {
         return this.http.post(this.url + 'Unfollow/',userUnfollowed, this.setUpHeaders(this.tokenSerivce.getToken()))
     }
