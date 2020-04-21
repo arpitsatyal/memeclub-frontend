@@ -5,23 +5,22 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
        <li class="dropdown-button dropdown-trigger" data-target="dropdown">
         <i class="fa fa-globe fa-1x badge"></i>
-         <span class="nav-label-icon">2</span>
+         <span class="nav-label-icon">{{noOfUnreadNotifs}}</span>
          <ul id="dropdown" class="dropdown-content col s12 collection">
            <li class="collection-item avatar" *ngFor="let n of notifications">
-             <img src="" alt="haha" class="circle">
+             <img src="http://placehold.it/50x50" alt="haha" class="circle">
              <span [ngClass]="n.read ? 'isRead' : 'unread'">{{n.message}}</span>
              <p class="time">{{ timeFromNow(n.created) }}</p>
            </li>
+
            <li *ngIf="!notifications.length">
-            <p class="text">
-              no notifications
-            </p> 
+            <p class="text">no notifications</p> 
+           </li>
             <p class="secondary-content">
               <a class="markAll btn" (click)="markAll()">Mark All As Read</a>
             </p>
+          </ul>
            </li>
-         </ul>
-       </li>
         <li><a (click)="logout()">Logout</a></li>
       </ul>
     </div>
@@ -30,7 +29,7 @@
         <img class="circle responsive-img" src="http://placehold.it/50x50">
       </div>
         <h1 class="profile-name">{{user.username}}</h1>
-        <p class="user-text">user details</p>
+        <!-- <p class="user-text">user details</p> -->
     </div>
   </div>
   </nav>

@@ -40,7 +40,7 @@ commentGroup: FormGroup
     this.toolbarEl.style.display = 'none'
   }
   commentIt() {
-    this.postService.addComment(this.commentGroup.value, this.post).subscribe(res => {
+    this.postService.addComment(this.commentGroup.value, this.post).subscribe(() => {
       this.commentGroup.reset()
    this.socket.emit('refresh', {})
     }, err => console.log(err))

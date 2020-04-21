@@ -7,33 +7,30 @@ import { TokenService } from 'src/app/services/token.service';
 import { MomentService } from 'src/app/services/moment.service';
 
 @Component({
-  selector: 'app-posts',
-  templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.css']
+  selector: 'app-top-streams',
+  templateUrl: './top-streams.component.html',
+  styleUrls: ['./top-streams.component.css']
 })
-export class PostsComponent implements OnInit {
+export class TopStreamsComponent implements OnInit {
   socket
-  posts
   topPosts
   user
   constructor(
     private postService: PostService,
     private tokenService: TokenService,
     private moment: MomentService
-  ) { 
+  ) {
     this.socket = io(environment.server)
-  }
+   }
 
   ngOnInit(): void {
     this.user = this.tokenService.GetPayload()
     this.AllPosts()
     this.socket.on('refreshPage', () => this.AllPosts())
   }
+
   AllPosts() {
-    this.postService.getAllPosts().subscribe((res: any) => {
-      this.posts = res.all
-      this.topPosts = res.topPosts
-    })
+    this.postService.getAllPosts().subscribe((posts: any) => this.topPosts = posts.topPosts, err => console.log(err))
   }
   timeFromNow(time) { return this.moment.timeFromNow(time) }
 
@@ -44,4 +41,5 @@ export class PostsComponent implements OnInit {
   checkInLikesArray(arr, username) {
     return _.some(arr, { username })
   }
+
 }

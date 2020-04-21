@@ -18,6 +18,7 @@ import { followersComponent } from '../components/users/followers/followers.comp
 import {FollowingComponent  } from '../components/users/following/following.component';
 import { NotificationsComponent } from '../components/notifications/notifications.component'
 import { MomentService } from '../services/moment.service';
+import { TopStreamsComponent } from '../components/streams/top-streams/top-streams.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MomentService } from '../services/moment.service';
     UsersComponent,
     followersComponent,
     FollowingComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    TopStreamsComponent
   ],
   imports: [
     CommonModule,
