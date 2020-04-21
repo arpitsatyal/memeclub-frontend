@@ -14,9 +14,10 @@ import { CommentsComponent } from '../components/comments/comments.component';
 import { RouterModule } from '@angular/router';
 import { UsersComponent } from '../components/users/users.component';
 import { UserService } from '../services/user.service';
-import { followersComponent } from '../components/followers/followers.component';
-import {FollowingComponent  } from '../components/following/following.component';
+import { followersComponent } from '../components/users/followers/followers.component';
+import {FollowingComponent  } from '../components/users/following/following.component';
 import { NotificationsComponent } from '../components/notifications/notifications.component'
+import { MomentService } from '../services/moment.service';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,6 @@ import { NotificationsComponent } from '../components/notifications/notification
     StreamsRoutingModule,
     RouterModule
   ],
-  providers: [TokenService, PostService, UserService]
+  providers: [TokenService, PostService, UserService, MomentService]
 })
 export class StreamsModule { }

@@ -46,7 +46,7 @@ export class UsersComponent implements OnInit {
   }
 
   follow(userman) {
-    this.userService.follow(userman).subscribe(() => this.socket.emit('refresh', {}), err => console.log(err) )
+    this.userService.follow(userman._id).subscribe(() => this.socket.emit('refresh', {}), err => console.log(err) )
   }
 
  checkInArray(arr, id) {

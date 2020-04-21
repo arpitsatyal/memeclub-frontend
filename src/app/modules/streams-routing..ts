@@ -4,8 +4,8 @@ import { StreamsComponent } from '../components/streams/streams.component'
 import { AuthGuard } from '../services/auth.guard';
 import { CommentsComponent } from '../components/comments/comments.component';
 import { UsersComponent } from '../components/users/users.component';
-import { FollowingComponent } from '../components/following/following.component';
-import { followersComponent } from '../components/followers/followers.component';
+import { FollowingComponent } from '../components/users/following/following.component';
+import { followersComponent } from '../components/users/followers/followers.component';
 import { NotificationsComponent } from '../components/notifications/notifications.component';
 
 

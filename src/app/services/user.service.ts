@@ -19,21 +19,18 @@ export class UserService extends BaseService {
         return this.http.get(this.url + 'get-users', this.setUpHeaders(this.tokenSerivce.getToken()))
     }
     follow(userFollowed) {
-        return this.http.post(this.url + 'follow/',userFollowed, this.setUpHeaders(this.tokenSerivce.getToken()))
-    }
-    followFollowing(userFollowed) {
-        return this.http.post(this.url + 'followFollowing/',userFollowed, this.setUpHeaders(this.tokenSerivce.getToken()))
-    }
-    UnfollowFollowing(userFollowed) {
-        return this.http.post(this.url + 'UnfollowFollowing/',userFollowed, this.setUpHeaders(this.tokenSerivce.getToken()))
+        return this.http.post(this.url + 'follow/',{ userId: userFollowed }, this.setUpHeaders(this.tokenSerivce.getToken()))
     }
     Unfollow(userUnfollowed) {
-        return this.http.post(this.url + 'Unfollow/',userUnfollowed, this.setUpHeaders(this.tokenSerivce.getToken()))
+        return this.http.post(this.url + 'Unfollow/',{ userId: userUnfollowed }, this.setUpHeaders(this.tokenSerivce.getToken()))
     }
     getUserById(id) {
         return this.http.get(this.url + 'get-user/' + id, this.setUpHeaders(this.tokenSerivce.getToken()))       
     }
-    getUserByName(username) {
-        return this.http.get(this.url + 'get-user/' + username, this.setUpHeaders(this.tokenSerivce.getToken()))       
+    MarkNotification(id, deleteVal?) {
+        return this.http.post(this.url + 'mark/' + id, { id, deleteVal },this.setUpHeaders(this.tokenSerivce.getToken()))
+    }
+    MarkAllAsRead() {
+        return this.http.post(this.url + 'mark-all', {}, this.setUpHeaders(this.tokenSerivce.getToken()))
     }
 }

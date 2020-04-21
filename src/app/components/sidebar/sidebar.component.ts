@@ -11,31 +11,32 @@ export class SidebarComponent implements OnInit {
   users = []
   noOfPosts
   me
-  following 
-  followers 
+  following
+  followers
   constructor(
     private userService: UserService,
     private tokenService: TokenService
 
-  ) { 
+  ) {
   }
 
   ngOnInit(): void {
     this.getNoPost()
     this.me = this.tokenService.GetPayload()
-    if(!this.followers) this.followers = 0
-    if(!this.following) this.following = 0
+    if (!this.noOfPosts) this.noOfPosts = 0
+    if (!this.followers) this.followers = 0
+    if (!this.following) this.following = 0
   }
   getNoPost() {
     this.userService.getAllUsers().subscribe((res: any) => {
-    this.users = res
-    this.users.forEach(user => {
-      if(user.username === this.me.username) { 
-        this.noOfPosts = user.posts.length
-      if(user.following.length) this.following = user.following.length
-      if(user.followers.length) this.followers = user.followers.length
-      }
+      this.users = res
+      this.users.forEach(user => {
+        if (user.username === this.me.username) {
+          if (user.posts.length) this.noOfPosts = user.posts.length
+          if (user.following.length) this.following = user.following.length
+          if (user.followers.length) this.followers = user.followers.length
+        }
+      })
     })
-    } )
   }
 }

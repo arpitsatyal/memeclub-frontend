@@ -2,9 +2,9 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {  ActivatedRoute } from '@angular/router';
 import { PostService } from 'src/app/services/post.service';
-import * as moment from 'moment'
 import { environment } from 'src/environments/environment';
 import io from 'socket.io-client'
+import { MomentService } from 'src/app/services/moment.service';
 
 @Component({
   selector: 'app-comments',
@@ -21,7 +21,8 @@ commentGroup: FormGroup
   constructor(
     private formBuilder: FormBuilder,
     private postService: PostService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private moment: MomentService
   ) {
     this.socket = io(environment.server)
    }
@@ -29,7 +30,7 @@ commentGroup: FormGroup
   ngOnInit(): void {
     this.toolbarEl = document.querySelector('.nav-content')
     this.commentGroup = this.formBuilder.group({
-      comment: ['',Validators.required ]
+      comment: ['', Validators.required ]
     })
     this.post = this.activatedRoute.snapshot.params.id
     this.getPost()
@@ -46,12 +47,9 @@ commentGroup: FormGroup
   }
   getPost() {
     this.postService.getPost(this.post).subscribe((res: any) =>{
-      console.log(res)
       this.comments = res.comments.reverse()
       this.currentPost = res.post
     }, err => console.log(err) )
   }
-  timeFromNow(time) {
-    return moment(time).fromNow()
-  }
+  timeFromNow(time) { return this.moment.timeFromNow(time) }
 }

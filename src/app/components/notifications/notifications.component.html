@@ -5,16 +5,31 @@
             <app-sidebar></app-sidebar>
         </div>
         <div class="col s12 m8 l9">
-            <ul class="collection col s12 m10">
-                <li class="collection-item avatar">
+            <ul class="collection col s12 m10" *ngIf="notifications.length">
+                <li class="collection-item avatar" *ngFor="let n of notifications">
                     <img src="http://placehold.it/50x50" class="circle" >
-                    <span class="title">message</span>
+                    <span class="title">{{n.message}}</span>
                     <a class="secondary-content">
-                        <i class="material-icons">brightness_1</i>
+                        <i class="material-icons" *ngIf="!n.read">brightness_1</i>
+                        <i class="material-icons" *ngIf="n.read">panorama_fish_eye</i>
                     </a>
-                    <p class="time">date</p>
+                    <p class="time">{{ timeFromNow(n.created) }}</p>
+                    <div>
+                        <i class="material-icons" (click)="MarkAsRead(n)"
+                        [ngClass]="n.read ? 'disabled' : 'notDisabled'">
+                            check
+                        </i>
+                        iv>
+                        <i class="material-icons" (click)="delete(n)">
+                            delete_forever
+                        </i>
+                    </div>
                 </li>
             </ul>
+            <div class="row" *ngIf="!notifications.length">
+                <h3 class="text">You have no notifications.</h3>
+            </div>
     </div>
 </div>
 </div>
+
