@@ -27,6 +27,9 @@ export class UserService extends BaseService {
     getUserById(id) {
         return this.http.get(this.url + 'get-user/' + id, this.setUpHeaders(this.tokenSerivce.getToken()))       
     }
+    getUserByName(username) {
+        return this.http.get(this.url + 'get-userByName/' + username, this.setUpHeaders(this.tokenSerivce.getToken()))       
+    }
     MarkNotification(id, deleteVal?) {
         return this.http.post(this.url + 'mark/' + id, { id, deleteVal },this.setUpHeaders(this.tokenSerivce.getToken()))
     }

@@ -19,6 +19,9 @@ import {FollowingComponent  } from '../components/users/following/following.comp
 import { NotificationsComponent } from '../components/notifications/notifications.component'
 import { MomentService } from '../services/moment.service';
 import { TopStreamsComponent } from '../components/streams/top-streams/top-streams.component';
+import { ChatComponent } from '../components/chat/chat.component';
+import { MessageComponent } from '../components/chat/message/message.component';
+import { MessagesService } from '../services/messages.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { TopStreamsComponent } from '../components/streams/top-streams/top-strea
     followersComponent,
     FollowingComponent,
     NotificationsComponent,
-    TopStreamsComponent
+    TopStreamsComponent,
+    ChatComponent,
+    MessageComponent
   ],
   imports: [
     CommonModule,
@@ -42,6 +47,6 @@ import { TopStreamsComponent } from '../components/streams/top-streams/top-strea
     StreamsRoutingModule,
     RouterModule
   ],
-  providers: [TokenService, PostService, UserService, MomentService]
+  providers: [TokenService, PostService, UserService, MomentService, MessagesService]
 })
 export class StreamsModule { }

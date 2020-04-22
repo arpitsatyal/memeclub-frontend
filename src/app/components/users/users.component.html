@@ -23,7 +23,7 @@
 
                         <button class="btn disabled" *ngIf="checkInArray(arr, user._id)" >followed</button>
 
-                        <a  class="secondary-content">
+                        <a  class="secondary-content" routerLink="/chat/{{user.username}}">
                             <i class="material-icons">chat</i>
                         </a>
                     </div>

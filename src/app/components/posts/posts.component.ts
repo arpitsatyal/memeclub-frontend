@@ -14,7 +14,6 @@ import { MomentService } from 'src/app/services/moment.service';
 export class PostsComponent implements OnInit {
   socket
   posts
-  topPosts
   user
   constructor(
     private postService: PostService,
@@ -30,10 +29,7 @@ export class PostsComponent implements OnInit {
     this.socket.on('refreshPage', () => this.AllPosts())
   }
   AllPosts() {
-    this.postService.getAllPosts().subscribe((res: any) => {
-      this.posts = res.all
-      this.topPosts = res.topPosts
-    })
+    this.postService.getAllPosts().subscribe((res: any) => this.posts = res.all)
   }
   timeFromNow(time) { return this.moment.timeFromNow(time) }
 
