@@ -14,8 +14,13 @@ export class MessagesService extends BaseService {
   ) {
     super('messages')
    }
-   sendMessage(senderId, recieverId, recieverName, message) {
-     return this.http.post(`${this.url}chat-message/${senderId}/${recieverId}`,
+   sendMessage(recieverId, recieverName, message) {
+     return this.http.post(`${this.url}chat-message/${recieverId}`,
       { recieverName, message }, this.setUpHeaders(this.tokenService.getToken())) 
    }
+   
+   getMessages(recieverId) {
+    return this.http.get(`${this.url}chat-message/${recieverId}`, this.setUpHeaders(this.tokenService.getToken())) 
+  }
+
 }
