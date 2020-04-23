@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,AfterViewInit  } from '@angular/core';
 import { MessagesService } from 'src/app/services/messages.service';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
@@ -11,13 +11,15 @@ import { environment } from 'src/environments/environment';
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.css']
 })
-export class MessageComponent implements OnInit {
+export class MessageComponent implements OnInit, AfterViewInit {
   recieverName
   recieverData
   message
   user
   socket
   messages = []
+  typing = false
+  typingMsg
   constructor(
     private messageService: MessagesService,
     private activatedRoute: ActivatedRoute,
@@ -31,7 +33,23 @@ export class MessageComponent implements OnInit {
     this.user = this.tokenService.GetPayload()
     this.recieverName = this.activatedRoute.snapshot.params.name
     this.getUserByName()
+    this.socket.on('is_typing', data => {
+      if(data.sender === this.recieverName) this.typing = true
+      this.socket.on('has_stopped_typing', data => {
+        if(data.sender === this.recieverName) this.typing = false
+      })
+    })
   }
+
+  ngAfterViewInit() {
+    let params = {
+      room1: this.user.username,
+      room2: this.recieverName
+    }
+
+    this.socket.emit('join chat', params)
+  }
+
   getUserByName() {
     this.userService.getUserByName(this.recieverName).subscribe(res => {
       this.recieverData = res
@@ -41,8 +59,7 @@ export class MessageComponent implements OnInit {
   }
   sendMessage() {
     if (this.message) {
-      this.messageService.sendMessage(this.recieverData._id, this.recieverName,
-        this.message)
+      this.messageService.sendMessage(this.recieverData._id, this.recieverName, this.message)
         .subscribe(() => {
           this.socket.emit('refresh', {})
           this.message = ''
@@ -50,7 +67,19 @@ export class MessageComponent implements OnInit {
     }
   }
 
-  getAllMessages(recieverId) {
-    this.messageService.getMessages(recieverId).subscribe((res: any) => this.messages = res.message)
+  isTyping() {
+    let data = {
+      sender: this.user.username,
+      reciever: this.recieverName
+    }
+    this.socket.emit('start_typing', data)
+    if(this.typingMsg) {
+      clearTimeout(this.typingMsg)
+    }
+    this.typingMsg = setTimeout(() => {
+      this.socket.emit('stop_typing', data)
+    }, 500)
   }
+
+  getAllMessages(recieverId) { this.messageService.getMessages(recieverId).subscribe((res: any) => this.messages = res.message) }
 }
