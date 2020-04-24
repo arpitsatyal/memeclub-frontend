@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TokenService } from 'src/app/services/token.service';
 import { Router } from '@angular/router';
 import * as M from 'materialize-css'
@@ -16,24 +16,33 @@ export class ToolbarComponent implements OnInit {
   user
   socket
   notifications = []
+  chatList = []
   noOfUnreadNotifs = 0
   constructor(
     public tokenService: TokenService,
     public router: Router,
     private userService: UserService,
     private moment: MomentService
-  ) { 
+  ) {
     this.socket = io(environment.server)
   }
 
   ngOnInit(): void {
     this.user = this.tokenService.GetPayload()
-    let dropdownEl = document.querySelector('.dropdown-trigger')
+    let dropdownEl = document.querySelectorAll('.dropdown-trigger')
     M.Dropdown.init(dropdownEl, {
       alignment: 'right',
       hover: true,
       coverTrigger: false
     })
+
+    let dropdownEl2 = document.querySelectorAll('.dropdown-trigger1')
+    M.Dropdown.init(dropdownEl2, {
+      alignment: 'right',
+      hover: true,
+      coverTrigger: false
+    })
+
     this.GetUser()
     this.socket.on('refreshPage', () => this.GetUser())
   }
@@ -45,11 +54,14 @@ export class ToolbarComponent implements OnInit {
     this.userService.getUserById(this.user._id).subscribe((res: any) => {
       this.notifications = res.notifications.reverse()
       this.notifications.forEach(n => n.read ? '' : this.noOfUnreadNotifs += 1)
+      this.chatList = res.chatList
+      console.log(this.chatList)
     })
-  } 
+  }
   timeFromNow(time) { return this.moment.timeFromNow(time) }
 
-markAll() {
-this.userService.MarkAllAsRead().subscribe(() => this.socket.emit('refresh', {}))
-}
+  markAll() {
+    this.userService.MarkAllAsRead().subscribe(() => this.socket.emit('refresh', {}))
+  }
+  messageDate(date) { return this.moment.messageDate(date) }
 }

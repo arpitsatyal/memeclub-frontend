@@ -21,6 +21,42 @@
             </p>
           </ul>
            </li>
+          <li>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </li>
+           <li class="dropdown-button dropdown-trigger1" data-target="dropdown1">
+            <i class="fa fa-bell fa-1x badge"></i>
+             <span class="nav-label-icon">{{noOfUnreadNotifs}}</span>
+             <ul id="dropdown1" class="dropdown-content col s12 collection">
+               <li class="collection-item avatar" *ngFor="let chat of chatList">
+                 <img src="http://placehold.it/50x50" alt="haha" class="circle">
+                 <span class="title">{{ chat.recieverId.username }}
+                   <a class="secondary-content">
+                     {{ messageDate(chat.messageId.message[chat.messageId.message.length -1 ].createdAt) }}
+                    </a>
+                 </span> 
+                 <p>
+                  {{ chat.messageId.message[chat.messageId.message.length -1 ].body }}
+                  <a class="secondary-content">
+                    <i class="material-icons">brightness_1</i>
+                  </a>
+                  <a class="secondary-content">
+                    <i class="material-icons">panorama_fish_eye</i>
+                  </a>
+                 </p>
+               </li>
+    
+               <li *ngIf="!notifications.length">
+                <p class="text">no notifications</p> 
+               </li>
+                <p class="secondary-content">
+                  <a class="markAll btn" (click)="markAll()">Mark All As Read</a>
+                </p>
+              </ul>
+               </li>
+
+
+
         <li><a (click)="logout()">Logout</a></li>
       </ul>
     </div>
