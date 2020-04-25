@@ -26,9 +26,10 @@
           </li>
            <li class="dropdown-button dropdown-trigger1" data-target="dropdown1">
             <i class="fa fa-bell fa-1x badge"></i>
-             <span class="nav-label-icon" *ngIf="url !== reciever">{{ noOfUnreadMsg }}</span>
+             <span class="nav-label-icon">{{ noOfUnreadMsgs }}</span>
              <ul id="dropdown1" class="dropdown-content col s12 collection">
-               <li class="collection-item avatar" *ngFor="let chat of chatList">
+               <li class="collection-item avatar" *ngFor="let chat of chatList" 
+               routerLink="/chat/{{ chat.recieverId.username }}">
                  <img src="http://placehold.it/50x50" alt="haha" class="circle">
                  <span class="title">{{ chat.recieverId.username }}
                    <a class="secondary-content">
@@ -37,10 +38,12 @@
                  </span> 
                  <p>
                   {{ chat.messageId.message[chat.messageId.message.length -1 ].body }}
-                  <a class="secondary-content">
+                  <a class="secondary-content" 
+                  *ngIf="!chat.messageId.message[chat.messageId.message.length -1 ].isRead">
                     <i class="material-icons">brightness_1</i>
                   </a>
-                  <a class="secondary-content">
+                  <a class="secondary-content"
+                  *ngIf="chat.messageId.message[chat.messageId.message.length -1 ].isRead">
                     <i class="material-icons">panorama_fish_eye</i>
                   </a>
                  </p>
