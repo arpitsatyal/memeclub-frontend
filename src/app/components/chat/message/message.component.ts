@@ -1,4 +1,4 @@
-import { Component, OnInit,AfterViewInit  } from '@angular/core';
+import { Component, OnInit,AfterViewInit, Input, OnChanges, SimpleChange, ChangeDetectionStrategy  } from '@angular/core';
 import { MessagesService } from 'src/app/services/messages.service';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
@@ -20,6 +20,8 @@ export class MessageComponent implements OnInit, AfterViewInit {
   messages = []
   typing = false
   typingMsg
+  @Input() onlineUsers
+  isOnline = false
   constructor(
     private messageService: MessagesService,
     private activatedRoute: ActivatedRoute,
@@ -48,6 +50,21 @@ export class MessageComponent implements OnInit, AfterViewInit {
     }
 
     this.socket.emit('join chat', params)
+  }
+
+  ngOnChanges(changes) {
+    let title = document.querySelector('.nameCol')
+    let online = changes.onlineUsers.currentValue
+    if(online.length) {
+      let result = online.indexOf(this.recieverName)
+     if(result === -1) {
+       this.onlineUsers = false;
+       (title as HTMLElement).style.marginTop = '20px'
+     } else {
+       this.onlineUsers = true;
+       (title as HTMLElement).style.marginTop = '10px'
+     }
+    }
   }
 
   getUserByName() {

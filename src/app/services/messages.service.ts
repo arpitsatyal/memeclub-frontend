@@ -23,4 +23,11 @@ export class MessagesService extends BaseService {
     return this.http.get(`${this.url}chat-message/${recieverId}`, this.setUpHeaders(this.tokenService.getToken())) 
   }
 
+  markMessages(reciever) {
+    return this.http.get(`${this.url}reciever-messages/${reciever}`, this.setUpHeaders(this.tokenService.getToken())) 
+  }
+
+  markAllMessages() {
+    return this.http.get(`${this.url}mark-all-messages`, this.setUpHeaders(this.tokenService.getToken())) 
+  }
 }

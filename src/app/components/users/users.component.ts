@@ -16,6 +16,7 @@ export class UsersComponent implements OnInit {
   me: any
   arr = []
   socket
+  onlineUsers = []
   constructor(
     private userService: UserService,
     private tokenService: TokenService
@@ -53,5 +54,17 @@ export class UsersComponent implements OnInit {
    let result = _.find(arr, ['userFollowed._id', id])
    if(result) return true
      return false
+ }
+ online(ev) {
+  this.onlineUsers = ev
+  console.log(this.onlineUsers)
+ }
+ checkIfOnline(name) {
+   let result = this.onlineUsers.indexOf(name)
+   if(result === -1) {
+     return true 
+   } else {
+     return false
+   }
  }
 }

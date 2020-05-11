@@ -28,8 +28,8 @@
             <i class="fa fa-bell fa-1x badge"></i>
              <span class="nav-label-icon">{{ noOfUnreadMsgs }}</span>
              <ul id="dropdown1" class="dropdown-content col s12 collection">
-               <li class="collection-item avatar" *ngFor="let chat of chatList" 
-               routerLink="/chat/{{ chat.recieverId.username }}">
+               <li class="collection-item avatar" *ngFor="let chat of chatList"
+               (click)="gotoChatPage(chat.recieverId.username)">
                  <img src="http://placehold.it/50x50" alt="haha" class="circle">
                  <span class="title">{{ chat.recieverId.username }}
                    <a class="secondary-content">
@@ -39,7 +39,8 @@
                  <p>
                   {{ chat.messageId.message[chat.messageId.message.length -1 ].body }}
                   <a class="secondary-content" 
-                  *ngIf="!chat.messageId.message[chat.messageId.message.length -1 ].isRead">
+                  *ngIf="!chat.messageId.message[chat.messageId.message.length -1 ].isRead
+                  && chat.recieverId.username !== chat.messageId.message[chat.messageId.message.length -1 ].recieverName">
                     <i class="material-icons">brightness_1</i>
                   </a>
                   <a class="secondary-content"
@@ -53,7 +54,7 @@
                 <p class="text">no notifications</p> 
                </li>
                 <p class="secondary-content">
-                  <a class="markAll btn" (click)="markAll()">Mark All As Read</a>
+                  <a class="markAll btn" (click)="markAllMsgs()">Mark All As Read</a>
                 </p>
               </ul>
                </li>

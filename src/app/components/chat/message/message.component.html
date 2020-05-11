@@ -8,8 +8,10 @@
                     </div>
                     <div class="row">
                         <div class="col s10 nameCol">
-                            <span> {{ recieverName }} </span>
-                            <p class="isOnline">online</p>
+                            <span> {{ recieverName }} 
+                                <p class="isOnline" *ngIf="isOnline">online</p>
+                            </span>
+                           
                         </div>
                     </div>
                 </div>

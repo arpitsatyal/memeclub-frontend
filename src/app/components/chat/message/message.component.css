@@ -1,7 +1,9 @@
 .nameCol {
     margin-left: 28px !important;
-    height: 40px !important;
+    height: auto !important;
+    width: auto !important;
     padding: 0px !important;
+
 }
 
 .card {
@@ -23,6 +25,7 @@
     color: white;
     margin-top: -5px !important;
     padding: 0px !important;
+    font-size: 15px;
 }
 .chat-bubble:before {
     content: '\00a0';
