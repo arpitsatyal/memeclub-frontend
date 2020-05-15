@@ -1,4 +1,4 @@
-import { Component, OnInit,AfterViewInit, Input, OnChanges, SimpleChange, ChangeDetectionStrategy  } from '@angular/core';
+import { Component, OnInit,AfterViewInit, Input, OnChanges, SimpleChange } from '@angular/core';
 import { MessagesService } from 'src/app/services/messages.service';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';

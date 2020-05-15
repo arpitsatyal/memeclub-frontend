@@ -7,33 +7,35 @@ import { TokenService } from './token.service';
 
 export class UserService extends BaseService {
     url
+    token
     constructor(
         private http: HttpClient,
         private tokenSerivce: TokenService
     ){
         super
         ('users')
+        this.token = this.tokenSerivce.getToken()
     }
 
     getAllUsers() {
-        return this.http.get(this.url + 'get-users', this.setUpHeaders(this.tokenSerivce.getToken()))
+        return this.http.get(this.url + 'get-users', this.setUpHeaders(this.token))
     }
     follow(userFollowed) {
-        return this.http.post(this.url + 'follow/',{ userId: userFollowed }, this.setUpHeaders(this.tokenSerivce.getToken()))
+        return this.http.post(this.url + 'follow/',{ userId: userFollowed }, this.setUpHeaders(this.token))
     }
     Unfollow(userUnfollowed) {
-        return this.http.post(this.url + 'Unfollow/',{ userId: userUnfollowed }, this.setUpHeaders(this.tokenSerivce.getToken()))
+        return this.http.post(this.url + 'Unfollow/',{ userId: userUnfollowed }, this.setUpHeaders(this.token))
     }
     getUserById(id) {
-        return this.http.get(this.url + 'get-user/' + id, this.setUpHeaders(this.tokenSerivce.getToken()))       
+        return this.http.get(this.url + 'get-user/' + id, this.setUpHeaders(this.token))       
     }
     getUserByName(username) {
-        return this.http.get(this.url + 'get-userByName/' + username, this.setUpHeaders(this.tokenSerivce.getToken()))       
+        return this.http.get(this.url + 'get-userByName/' + username, this.setUpHeaders(this.token))      
     }
     MarkNotification(id, deleteVal?) {
-        return this.http.post(this.url + 'mark/' + id, { id, deleteVal },this.setUpHeaders(this.tokenSerivce.getToken()))
+        return this.http.post(this.url + 'mark/' + id, { id, deleteVal },this.setUpHeaders(this.token))
     }
     MarkAllAsRead() {
-        return this.http.post(this.url + 'mark-all', {}, this.setUpHeaders(this.tokenSerivce.getToken()))
+        return this.http.post(this.url + 'mark-all', {}, this.setUpHeaders(this.token))
     }
 }

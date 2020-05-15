@@ -8,6 +8,7 @@ import { FollowingComponent } from '../components/users/following/following.comp
 import { followersComponent } from '../components/users/followers/followers.component';
 import { NotificationsComponent } from '../components/notifications/notifications.component';
 import { ChatComponent } from '../components/chat/chat.component';
+import { ImagesComponent } from '../components/images/images.component';
 
 
 let routes:Routes = [
@@ -44,6 +45,15 @@ let routes:Routes = [
     path: 'chat/:name',
     component: ChatComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'images/:name',
+    component: ImagesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: '**',
+   redirectTo: 'streams'
   }
 ]
 

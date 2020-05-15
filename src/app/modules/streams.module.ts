@@ -22,7 +22,10 @@ import { TopStreamsComponent } from '../components/streams/top-streams/top-strea
 import { ChatComponent } from '../components/chat/chat.component';
 import { MessageComponent } from '../components/chat/message/message.component';
 import { MessagesService } from '../services/messages.service';
-import {NgxAutoScrollModule} from 'ngx-auto-scroll'
+import {NgxAutoScrollModule} from 'ngx-auto-scroll';
+import { ImagesComponent } from '../components/images/images.component'
+import {FileUploadModule } from 'ng2-file-upload'
+import {ImageService } from '../services/image.service'
 
 @NgModule({
   declarations: [
@@ -38,7 +41,8 @@ import {NgxAutoScrollModule} from 'ngx-auto-scroll'
     NotificationsComponent,
     TopStreamsComponent,
     ChatComponent,
-    MessageComponent
+    MessageComponent,
+    ImagesComponent
   ],
   imports: [
     CommonModule,
@@ -47,8 +51,9 @@ import {NgxAutoScrollModule} from 'ngx-auto-scroll'
     ReactiveFormsModule,
     StreamsRoutingModule,
     NgxAutoScrollModule,
-    RouterModule
+    RouterModule,
+    FileUploadModule
   ],
-  providers: [TokenService, PostService, UserService, MomentService, MessagesService]
+  providers: [TokenService, PostService, UserService, MomentService, MessagesService,ImageService]
 })
 export class StreamsModule { }

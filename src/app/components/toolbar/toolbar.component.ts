@@ -20,6 +20,8 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
   chatList = []
   noOfUnreadNotifs = 0
   noOfUnreadMsgs = 0
+  imageId
+  imageVersion
   @Output() onlineUsers = new EventEmitter()
   constructor(
     public tokenService: TokenService,
@@ -59,6 +61,8 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
   }
   GetUser() {
     this.userService.getUserById(this.user._id).subscribe((res: any) => {
+      this.imageId = res.picId
+      this.imageVersion = res.picVersion
       this.notifications = res.notifications.reverse()
       this.notifications.forEach(n => n.read ? '' : this.noOfUnreadNotifs += 1)
       this.chatList = res.chatList
