@@ -4,6 +4,7 @@ import { TokenService } from 'src/app/services/token.service';
 import _ from 'lodash'
 import io from 'socket.io-client'
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -19,7 +20,8 @@ export class UsersComponent implements OnInit {
   onlineUsers = []
   constructor(
     private userService: UserService,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private router: Router
   ) { 
     this.socket = io(environment.server)
   }
@@ -66,5 +68,9 @@ export class UsersComponent implements OnInit {
    } else {
      return false
    }
+ }
+
+ viewUser(user) {
+   this.router.navigate([user.username])
  }
 }

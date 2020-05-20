@@ -25,7 +25,8 @@ import { MessagesService } from '../services/messages.service';
 import {NgxAutoScrollModule} from 'ngx-auto-scroll';
 import { ImagesComponent } from '../components/images/images.component'
 import {FileUploadModule } from 'ng2-file-upload'
-import {ImageService } from '../services/image.service'
+import {ImageService } from '../services/image.service';
+import { ViewUserComponent } from '../components/view-user/view-user.component'
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {ImageService } from '../services/image.service'
     TopStreamsComponent,
     ChatComponent,
     MessageComponent,
-    ImagesComponent
+    ImagesComponent,
+    ViewUserComponent
   ],
   imports: [
     CommonModule,

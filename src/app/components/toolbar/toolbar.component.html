@@ -8,7 +8,7 @@
          <span class="nav-label-icon">{{noOfUnreadNotifs}}</span>
          <ul id="dropdown" class="dropdown-content col s12 collection">
            <li class="collection-item avatar" *ngFor="let n of notifications">
-             <img src="http://placehold.it/50x50" alt="haha" class="circle">
+             <img src="https://res.cloudinary.com/arpit7xx/image/upload/v{{n.senderId.picVersion}}/{{n.senderId.picId}}" alt="haha" class="circle">
              <span [ngClass]="n.read ? 'isRead' : 'unread'">{{n.message}}</span>
              <p class="time">{{ timeFromNow(n.created) }}</p>
            </li>
@@ -30,7 +30,7 @@
              <ul id="dropdown1" class="dropdown-content col s12 collection">
                <li class="collection-item avatar" *ngFor="let chat of chatList"
                (click)="gotoChatPage(chat.recieverId.username)">
-                 <img src="http://placehold.it/50x50" alt="haha" class="circle">
+                 <img src="https://res.cloudinary.com/arpit7xx/image/upload/v{{chat.recieverId.picVersion}}/{{chat.recieverId.picId}}" alt="haha" class="circle">
                  <span class="title">{{ chat.recieverId.username }}
                    <a class="secondary-content">
                      {{ messageDate(chat.messageId.message[chat.messageId.message.length -1 ].createdAt) }}

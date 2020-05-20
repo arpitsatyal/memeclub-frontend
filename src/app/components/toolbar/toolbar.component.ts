@@ -61,6 +61,7 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
   }
   GetUser() {
     this.userService.getUserById(this.user._id).subscribe((res: any) => {
+      // console.log('res in tool', res)
       this.imageId = res.picId
       this.imageVersion = res.picVersion
       this.notifications = res.notifications.reverse()
