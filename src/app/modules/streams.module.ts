@@ -26,7 +26,8 @@ import {NgxAutoScrollModule} from 'ngx-auto-scroll';
 import { ImagesComponent } from '../components/images/images.component'
 import {FileUploadModule } from 'ng2-file-upload'
 import {ImageService } from '../services/image.service';
-import { ViewUserComponent } from '../components/view-user/view-user.component'
+import { ViewUserComponent } from '../components/view-user/view-user.component';
+import { ChangePasswordComponent } from '../components/users/change-password/change-password.component'
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ViewUserComponent } from '../components/view-user/view-user.component'
     ChatComponent,
     MessageComponent,
     ImagesComponent,
-    ViewUserComponent
+    ViewUserComponent,
+    ChangePasswordComponent
   ],
   imports: [
     CommonModule,

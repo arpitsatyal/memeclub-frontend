@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col s12 m4">
-        <a>
+    <a *ngIf="users" routerLink="/{{me.username}}"> 
             <span>Posts</span>
             <p class="num"> {{noOfPosts}}</p>
         </a>
@@ -64,4 +64,12 @@
                                     <i class="material-icons">photo_library</i></a></div>
                             </a>
                         </li>
+
+                        <ul class="collection with-header">
+                            <li class="collection-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true }">
+                                <a routerLink="/account/password">
+                                    <div>Change Password<a class="secondary-content">
+                                        <i class="material-icons">vpn_key</i></a></div>
+                                </a>
+                            </li>
   </ul>

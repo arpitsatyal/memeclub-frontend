@@ -59,7 +59,6 @@ export class UsersComponent implements OnInit {
  }
  online(ev) {
   this.onlineUsers = ev
-  console.log(this.onlineUsers)
  }
  checkIfOnline(name) {
    let result = this.onlineUsers.indexOf(name)
@@ -72,5 +71,8 @@ export class UsersComponent implements OnInit {
 
  viewUser(user) {
    this.router.navigate([user.username])
+   if(this.me.username !== user.username) {
+     this.userService.viewProfileNotify(user._id).subscribe(() => this.socket.emit('refresh', {}))
+   }
  }
 }

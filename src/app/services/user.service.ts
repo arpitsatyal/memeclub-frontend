@@ -38,4 +38,10 @@ export class UserService extends BaseService {
     MarkAllAsRead() {
         return this.http.post(this.url + 'mark-all', {}, this.setUpHeaders(this.token))
     }
+    viewProfileNotify(id) {
+        return this.http.post(this.url + 'view-profile', { id }, this.setUpHeaders(this.token))
+    }
+    changePassword(body) {
+        return this.http.post(this.url + 'change-password', body, this.setUpHeaders(this.token))
+    }
 }
