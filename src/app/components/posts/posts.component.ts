@@ -29,7 +29,10 @@ export class PostsComponent implements OnInit {
     this.socket.on('refreshPage', () => this.AllPosts())
   }
   AllPosts() {
-    this.postService.getAllPosts().subscribe((res: any) => this.posts = res.all)
+    this.postService.getAllPosts().subscribe((res: any) => {
+      console.log(res)
+      this.posts = res.all
+    })
   }
   timeFromNow(time) { return this.moment.timeFromNow(time) }
 

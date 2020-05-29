@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col s12">
                     <span class="title">{{user}}</span>
-                    <h2 class="cityName">country</h2>
+                    <h2 class="cityName" *ngIf="userData.country">{{userData.country}}</h2>
                 </div>
             </div>
         </div>
@@ -37,10 +37,10 @@
                 <ul class="collection col s12 m12 l10"
                 *ngFor="let post of posts">
                     <li class="collection-item avatar">
-                        <img src="" alt="" class="circle">
+                        <img src="https://res.cloudinary.com/arpit7xx/image/upload/v{{userData.picVersion}}/{{userData.picId}}" alt="" class="circle">
                         <span class="post">{{ post.postId.username }}</span>
                         <p class="time">   {{ timeFromNow(post.createdAt) }}
-                            <br>Country
+                            <br>
                         </p>
                     </li>
 
@@ -48,7 +48,8 @@
                         <div class="col s12">
                             <div class="card">
                                 <div class="card-image card_image">
-                                    <img src="https://res.cloudinary.com/arpit7xx/image/upload/v{{userData.picVersion}}/{{userData.picId}}" alt="" class="postImage">
+                                    <img src="https://res.cloudinary.com/arpit7xx/image/upload/v{{post.postId.imgVersion}}/{{post.postId.imgId}}" 
+                    alt="" class="postImage">
                                 </div>
                                 <div class="card-content">
                                     <p>{{ post.post }}</p>
