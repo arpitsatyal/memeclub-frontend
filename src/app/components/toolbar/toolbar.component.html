@@ -1,34 +1,38 @@
 <nav class="nav-extended">
   <div class="container">
     <div class="nav-wrapper">
-      <a routerLink="/streams" class="brand-logo">Memeclub</a>
+      <a routerLink="/streams" class="brand-logo">Metwork</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-       <li class="dropdown-button dropdown-trigger" data-target="dropdown">
-        <i class="fa fa-globe fa-1x badge"></i>
-         <span class="nav-label-icon">{{noOfUnreadNotifs}}</span>
-         <ul id="dropdown" class="dropdown-content col s12 collection">
-           <li class="collection-item avatar" *ngFor="let n of notifications">
-             <img src="https://res.cloudinary.com/arpit7xx/image/upload/v{{n.senderId.picVersion}}/{{n.senderId.picId}}" alt="haha" class="circle">
-             <span [ngClass]="n.read ? 'isRead' : 'unread'">{{n.message}}</span>
-             <p class="time">{{ timeFromNow(n.created) }}</p>
-           </li>
+        <li class="dropdown-button dropdown-trigger arpit" data-target="dropdown">
+          <i class="fa fa-globe fa-1x badge"></i>
+          <span class="nav-label-icon">{{noOfUnreadNotifs}}</span>
+          <ul id="dropdown" class="dropdown-content col s12 collection">
+            <li class="collection-item avatar" *ngFor="let n of notifications">
+              <img
+                src="https://res.cloudinary.com/arpit7xx/image/upload/v{{n.senderId.picVersion}}/{{n.senderId.picId}}"
+                alt="haha" class="circle">
+              <span [ngClass]="n.read ? 'isRead' : 'unread'">{{n.message}}</span>
+              <p class="time">{{ timeFromNow(n.created) }}</p>
+            </li>
 
-           <li *ngIf="!notifications.length">
-            <p class="text">no notifications</p> 
-           </li>
+            <li *ngIf="!notifications.length">
+              <p class="text">no notifications</p>
+            </li>
             <p class="secondary-content">
               <a class="markAll btn" (click)="markAll()">Mark All As Read</a>
             </p>
           </ul>
-           </li>
-          <li>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          </li>
-           <li class="dropdown-button dropdown-trigger1" data-target="dropdown1">
+        </li>
+        <li>
+
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        </li>
+        <!-- <li class="dropdown-button dropdown-trigger1" data-target="dropdown1">
             <i class="fa fa-bell fa-1x badge"></i>
              <span class="nav-label-icon">{{ noOfUnreadMsgs }}</span>
              <ul id="dropdown1" class="dropdown-content col s12 collection">
-               <li class="collection-item avatar" *ngFor="let chat of chatList"
+               <li class="collection-item avatar circle" *ngFor="let chat of chatList"
                (click)="gotoChatPage(chat.recieverId.username)">
                  <img src="https://res.cloudinary.com/arpit7xx/image/upload/v{{chat.recieverId.picVersion}}/{{chat.recieverId.picId}}" alt="haha" class="circle">
                  <span class="title">{{ chat.recieverId.username }}
@@ -57,17 +61,20 @@
                   <a class="markAll btn" (click)="markAllMsgs()">Mark All As Read</a>
                 </p>
               </ul>
-               </li>
+               </li> -->
+        <li style="padding-left: 30px;"><a (click)="logout()">Logout</a></li>
 
-        <li><a (click)="logout()">Logout</a></li>
       </ul>
+
     </div>
+
     <div class="nav-content">
       <div class="nav-div">
-        <img class="circle responsive-img" src="https://res.cloudinary.com/arpit7xx/image/upload/v{{imageVersion}}/{{imageId}}">
+        <img class="circle responsive-img"
+          src="https://res.cloudinary.com/arpit7xx/image/upload/v{{imageVersion}}/{{imageId}}" style="width: 70px">
       </div>
-        <h1 class="profile-name">{{user.username}}</h1>
-        <!-- <p class="user-text">user details</p> -->
+      <h1 class="profile-name">{{user.username}}</h1>
+      <!-- <p class="user-text">user details</p> -->
     </div>
   </div>
-  </nav>
+</nav>

@@ -18,3 +18,6 @@
 .following {
     color: #64b5f6 !important;
 }
+.card-action {
+    height: 100px;
+}

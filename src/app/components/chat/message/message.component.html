@@ -23,13 +23,13 @@
         <div class="row">
             <div class="col s12">
                 <div class="message-wrapper" *ngFor="let message of messages"><br>
-                    <div class="left" *ngIf="recieverName === message.senderName">
+                    <div class="left arpit" *ngIf="recieverName === message.senderName">
                         <div class="chat-bubble left slide-left">
                             <div class="message">{{ message.body }}</div>
                         </div>
                     </div>
-                    <div class="right" *ngIf="user.username === message.senderName">
-                        <div class="chat-bubble right slide-right">
+                    <div class="right arpit2" *ngIf="user.username === message.senderName">
+                        <div class="chat-bubble right slide-right arpit2">
                             <div class="message">{{ message.body }}</div>
                         </div>
                     </div>
@@ -53,9 +53,9 @@
                     <textarea name="message" (keypress)="isTyping()"
                      [(ngModel)]="message" class="materialize-textarea inputBox"></textarea>
                 </div>
-                <div class="input-field col s1 emojiDiv">
+                <!-- <div class="input-field col s1 emojiDiv">
                     <button class="emojiBtn">emoji</button>
-                </div>
+                </div> -->
                 <div class="input-field col s1">
                     <button class="suffix btn">send</button>
                 </div>

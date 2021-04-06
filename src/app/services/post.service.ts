@@ -29,4 +29,10 @@ url
     getPost(postId) {
     return this.http.get(this.url + 'post/' + postId , this.setUpHeaders(this.tokenService.getToken()))
   }
+  editPost(body) {
+    return this.http.put(this.url + 'edit-post', body, this.setUpHeaders(this.tokenService.getToken()))
+  }
+  deletePost(id) {
+    return this.http.delete(`${this.url}delete-post/${id}`, this.setUpHeaders(this.tokenService.getToken()))
+  }
 }

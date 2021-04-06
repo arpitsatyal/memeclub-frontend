@@ -44,4 +44,7 @@ export class UserService extends BaseService {
     changePassword(body) {
         return this.http.post(this.url + 'change-password', body, this.setUpHeaders(this.token))
     }
+    editPostUser(body) {
+        return this.http.post(this.url + 'edit-postUser', body, this.setUpHeaders(this.token))
+    }
 }

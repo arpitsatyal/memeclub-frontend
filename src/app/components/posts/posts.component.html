@@ -2,10 +2,13 @@
     <li class="collection-item avatar">
       <img src="https://res.cloudinary.com/arpit7xx/image/upload/v{{post.user.picVersion}}/{{post.user.picId}}" alt="" class="circle">
       <span class="title">{{post.username}}</span>
+      <span class="title secondary-content modal-trigger"
+      (click)="openEditModal(post)"
+      *ngIf="user.username === post.username" data-target="modal">
+      Edit</span>
       <p class="time">{{timeFromNow(post.created)}}<br>
         {{ post.user.country}}
       </p>
-      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
     </li>
     <div class="row">
         <div class="col s12">
@@ -32,3 +35,21 @@
         </div>
     </div>
   </ul>
+
+  <div class="container">
+    <div id="modal" class="modal">
+        <div class="modal-content">
+          <h4>Edit
+              <button class="secondary-content deleteBtn btn" (click)="deletePost()">delete</button>
+          </h4>
+          <p *ngIf="clickedPost">{{clickedPost.post }}</p>
+          <form [formGroup]="editForm" novalidate>
+        <textarea formControlName="editedPost" class="materialize-textarea"></textarea>
+        <div class="modal-footer">
+            <button class="button" (click)="close()">close</button>&nbsp;
+            <button class="btn" (click)="submitPost()">save</button>
+          </div>
+    </form>
+        </div>
+      </div>
+  </div>

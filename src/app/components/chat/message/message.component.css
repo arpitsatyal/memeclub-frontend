@@ -135,28 +135,17 @@ img.imgMsg {
 .inputField {
     height: 38px;
 }
-emoji-picker {
-    width: 100% !important;
-    right: 6px;
-}
-emoji-content {
-    width: 100% !important;
-}
-.emojiBtn {
-    font-size: 20px !important;
-    background: inherit !important;
-    border:  none !important;
-    text-align: center !important;
-    margin-left: -10px !important;
-}
-.emojiDiv {
-    width: 40px !important;
-    margin-bottom: 0px !important;
-}
+
 .imgCircle {
     width: 40px !important;
     height: 40px !important;
     border-radius: 50% !important;
     margin: 0 auto !important;
     top: 20px !important;
+}
+.arpit {
+    padding-left: 90%;
+}
+.arpit2 {
+    padding-right: 90%;
 }

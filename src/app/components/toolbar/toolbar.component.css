@@ -20,6 +20,7 @@
 }
 .secondary-content {
     margin-top: -5px !important;
+    width: 1000 px;
 }
 .markAll {
     color: #ffffff;
@@ -33,4 +34,26 @@
 }
 .text {
     text-align: center;
+}
+/* .secondary-content {
+    width: 500 px;
+    background-color: aqua;
+
+} */
+
+/* .nav-wrapper {
+    max-height: 320px;
+} */
+.brand-logo {
+    font-size: 50px;
+}
+/* .nav-content {
+  height: 200px
+} */
+.profile-name {
+    font-size: 40px;
+}
+
+.arpit {
+    width: 100%;
 }

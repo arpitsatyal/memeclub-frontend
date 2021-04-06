@@ -65,4 +65,5 @@ export class PostsFormComponent implements OnInit {
       console.log(err)
     })
   }
+  
 }
