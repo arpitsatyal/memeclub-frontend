@@ -19,6 +19,7 @@
                            {{user.username}}
                            <i class=" fa fa-circle" *ngIf="!checkIfOnline(user.username)"></i>
                         </h3>
+                        <br>
                         <p>{{ user.country }}</p>
                         <button class="btn" *ngIf="!checkInArray(arr, user._id)"
                          (click)="follow(user)" >follow</button>

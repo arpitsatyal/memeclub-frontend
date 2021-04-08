@@ -28,6 +28,8 @@ import {FileUploadModule } from 'ng2-file-upload'
 import {ImageService } from '../services/image.service';
 import { ViewUserComponent } from '../components/view-user/view-user.component';
 import { ChangePasswordComponent } from '../components/users/change-password/change-password.component'
+import {GeneratorComponent  } from './../memegenerator/memegenerator.component'
+import {ColorChromeModule } from 'ngx-color/chrome'
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { ChangePasswordComponent } from '../components/users/change-password/cha
     MessageComponent,
     ImagesComponent,
     ViewUserComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    GeneratorComponent
   ],
   imports: [
     CommonModule,
@@ -56,7 +59,8 @@ import { ChangePasswordComponent } from '../components/users/change-password/cha
     StreamsRoutingModule,
     NgxAutoScrollModule,
     RouterModule,
-    FileUploadModule
+    FileUploadModule,
+    ColorChromeModule
   ],
   providers: [TokenService, PostService, UserService, MomentService, MessagesService,ImageService]
 })
