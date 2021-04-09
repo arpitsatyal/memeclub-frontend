@@ -11,6 +11,7 @@ import { ChatComponent } from '../components/chat/chat.component';
 import { ImagesComponent } from '../components/images/images.component';
 import { ViewUserComponent } from '../components/view-user/view-user.component';
 import { ChangePasswordComponent } from '../components/users/change-password/change-password.component';
+import { GeneratorComponent } from '../memegenerator/memegenerator.component'
 
 
 let routes:Routes = [
@@ -63,6 +64,7 @@ let routes:Routes = [
     component: ChangePasswordComponent,
     canActivate: [AuthGuard]
   },
+
   {
     path: '**',
    redirectTo: 'streams'

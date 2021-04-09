@@ -1,0 +1,17 @@
+<h1 class="anurag">Popular memes around the world right now!
+<a routerLink="/streams" class="anurag" style="float: center;">Go Back</a>
+
+</h1>
+<ul class="collection col s12 m12 l10" >
+   
+    <div class="row">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-image" *ngFor="let meme of apiImgs">
+                    <img class="images" src="{{meme}}" alt="x" >
+                </div>
+               
+                </div>
+            </div>
+        </div>
+  </ul>

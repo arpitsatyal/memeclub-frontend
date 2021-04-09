@@ -9,6 +9,7 @@ import * as M from 'materialize-css'
 export class StreamsComponent implements OnInit {
   streams = false
   topStreams = false
+
   constructor(
   ) { }
 
@@ -27,4 +28,5 @@ export class StreamsComponent implements OnInit {
       this.topStreams = true
     }
   }
+  
 }

@@ -30,6 +30,7 @@ import { ViewUserComponent } from '../components/view-user/view-user.component';
 import { ChangePasswordComponent } from '../components/users/change-password/change-password.component'
 import {GeneratorComponent  } from './../memegenerator/memegenerator.component'
 import {ColorChromeModule } from 'ngx-color/chrome'
+import { Ng2ImgMaxModule } from 'ng2-img-max';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import {ColorChromeModule } from 'ngx-color/chrome'
     NgxAutoScrollModule,
     RouterModule,
     FileUploadModule,
-    ColorChromeModule
+    ColorChromeModule,
+    Ng2ImgMaxModule
   ],
   providers: [TokenService, PostService, UserService, MomentService, MessagesService,ImageService]
 })
