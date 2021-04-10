@@ -13,7 +13,7 @@ import { MomentService } from 'src/app/services/moment.service';
 })
 export class TopStreamsComponent implements OnInit {
   socket
-  topPosts
+  topPosts = []
   user
   constructor(
     private postService: PostService,
@@ -30,7 +30,11 @@ export class TopStreamsComponent implements OnInit {
   }
 
   AllPosts() {
-    this.postService.getAllPosts().subscribe((posts: any) => this.topPosts = posts.topPosts, err => console.log(err))
+    this.postService.getAllPosts().subscribe((posts: any) => {
+      console.log(posts)
+      this.topPosts = posts.topPosts
+    },
+     err => console.log(err))
   }
   timeFromNow(time) { return this.moment.timeFromNow(time) }
 

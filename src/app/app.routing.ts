@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import {Routes, RouterModule } from '@angular/router'
 import { GeneratorComponent } from './memegenerator/memegenerator.component'
 import { MemeapiComponent } from './memeapi/memeapi.component'
+import { FacebookShareComponent } from './share/share.component';
 let routes: Routes = [
     {
         path: '', loadChildren: './modules/auth.module#AuthModule'
@@ -16,7 +17,12 @@ let routes: Routes = [
       {
         path: 'memeapi',
         component: MemeapiComponent,
-      },
+      }, 
+      {
+        path: 'share',
+        component: FacebookShareComponent,
+      }, 
+     
 ]
 
 @NgModule({

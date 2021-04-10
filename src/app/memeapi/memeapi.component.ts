@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Ng2ImgMaxService } from 'ng2-img-max';
-import convert from 'image-file-resize';
 
 @Component({
   selector: 'app-memeapi',

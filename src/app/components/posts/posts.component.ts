@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit  } from '@angular/core'
 import { PostService } from 'src/app/services/post.service'
 import io from 'socket.io-client'
 import { environment } from 'src/environments/environment'
@@ -20,6 +20,8 @@ export class PostsComponent implements OnInit {
   editForm: FormGroup
   clickedPost
   modalEl
+  public repoUrl:string;
+
   constructor(
     private postService: PostService,
     private tokenService: TokenService,
@@ -36,6 +38,7 @@ export class PostsComponent implements OnInit {
     this.AllPosts()
     this.socket.on('refreshPage', () => this.AllPosts())
     this.initEditForm()
+    this.repoUrl='http://www.rd.com/health/diet-weight-loss/speed-up-metabolism'
   }
   initEditForm() {
     this.editForm = this.formBuilder.group({

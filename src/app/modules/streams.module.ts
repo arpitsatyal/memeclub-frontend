@@ -31,6 +31,9 @@ import { ChangePasswordComponent } from '../components/users/change-password/cha
 import {GeneratorComponent  } from './../memegenerator/memegenerator.component'
 import {ColorChromeModule } from 'ngx-color/chrome'
 import { Ng2ImgMaxModule } from 'ng2-img-max';
+import { FacebookShareComponent } from '../share/share.component';
+import { FacebookModule } from 'ngx-facebook'
+import { MDBBootstrapModule } from 'angular-bootstrap-md'; 
 
 @NgModule({
   declarations: [
@@ -50,7 +53,8 @@ import { Ng2ImgMaxModule } from 'ng2-img-max';
     ImagesComponent,
     ViewUserComponent,
     ChangePasswordComponent,
-    GeneratorComponent
+    GeneratorComponent,
+    FacebookShareComponent
   ],
   imports: [
     CommonModule,
@@ -62,7 +66,9 @@ import { Ng2ImgMaxModule } from 'ng2-img-max';
     RouterModule,
     FileUploadModule,
     ColorChromeModule,
-    Ng2ImgMaxModule
+    Ng2ImgMaxModule,
+    FacebookModule,
+    MDBBootstrapModule.forRoot() 
   ],
   providers: [TokenService, PostService, UserService, MomentService, MessagesService,ImageService]
 })
