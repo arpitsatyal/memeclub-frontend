@@ -19,7 +19,7 @@
                         <h3 class="card-title">
                             {{user.follower.username}}
                         </h3>
-                        <p>country</p>
+                        <p>{{user.follower.country }}</p>
                         <button class="btn" (click)="Follow(user)" *ngIf="!hasFollowedMe.includes(user)">follow</button>
                         <button class="btn" (click)="unFollow(user)" *ngIf="hasFollowedMe.includes(user)">Unfollow</button>
                     </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Ng2ImgMaxService } from 'ng2-img-max';
+import { ImageService } from '../services/image.service';
 
 @Component({
   selector: 'app-memeapi',
@@ -8,29 +8,12 @@ import { Ng2ImgMaxService } from 'ng2-img-max';
 })
 export class MemeapiComponent implements OnInit {
   apiImgs = []
-  constructor(private ng2ImgMax: Ng2ImgMaxService) { }
+  constructor(private imageService: ImageService) { }
 
   ngOnInit(): void {
-    this.meme()
-
+    this.getImages()
   }
-  async meme() {
-  	let data = await fetch('https://api.imgflip.com/get_memes')
-  	await data.json().then(response => {
-      console.log(response.data.memes)
-     response.data.memes.forEach(m => {
-    
-      this.apiImgs.push(m.url)
-     })
-      
-      this.ng2ImgMax.resize(this.apiImgs, 400, 300).subscribe(
-        result => {
-          console.log('res', result)
-        },
-        error => {
-          console.log('😢 Oh no!', error);
-        }
-      );
-    })
-  }
+ getImages() {
+   this.imageService.apiMeme().subscribe((response:any) => this.apiImgs = response.apiImgs, err => console.log(err))
+ }
 }

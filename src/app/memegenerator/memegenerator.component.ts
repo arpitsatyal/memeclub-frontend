@@ -1,5 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ColorEvent } from 'ngx-color';
+import { PostService } from '../services/post.service';
+import { environment } from 'src/environments/environment';
+import io from 'socket.io-client'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-memegenerator',
@@ -10,10 +14,17 @@ export class GeneratorComponent implements OnInit {
 @ViewChild('memeCanvas', { static: false }) myCanvas
 topText: string = ''
 bottomText: string = ''
+caption: string = ''
 fileEvent: any
 textColor: string = '#000000'
 backgroundColor: string = '#F9F9FB'
-  constructor() { }
+socket
+  constructor(
+    private postService: PostService,
+    private router: Router
+  ) { 
+    this.socket = io(environment.server)
+  }
 
   ngOnInit(): void {
   }
@@ -54,6 +65,20 @@ backgroundColor: string = '#F9F9FB'
     this.drawText()
   }
   downloadImg() {
+    let body
+    let canvas = this.myCanvas.nativeElement
+    let image = canvas.toDataURL('image/png')
+    let link = document.createElement('a')
+    link.download = 'memeImg.png'
+    link.href = image
+    link.click()
+    body = {
+      post: this.caption,
+      image: image
+    }
+    this.postService.createPost(body).subscribe(() => this.router.navigate(['/streams']), err => console.log(err))
+  }
+  downloadOnlyImg() {
     let canvas = this.myCanvas.nativeElement
     let image = canvas.toDataURL('image/png')
     let link = document.createElement('a')
@@ -62,3 +87,4 @@ backgroundColor: string = '#F9F9FB'
     link.click()
   }
 }
+

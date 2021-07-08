@@ -31,6 +31,7 @@ export class SidebarComponent implements OnInit {
     this.userService.getAllUsers().subscribe((res: any) => {
       this.users = res
       this.users.forEach(user => {
+      // console.log(user)
         if (user.username === this.me.username) {
           if (user.posts.length) this.noOfPosts = user.posts.length
           if (user.following.length) this.following = user.following.length

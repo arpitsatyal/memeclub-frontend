@@ -6,9 +6,9 @@ import { AppRoutingModule } from './app.routing';
 import { StreamsModule } from './modules/streams.module';
 import { CookieService } from 'ngx-cookie-service';
 import { MemeapiComponent } from './memeapi/memeapi.component';
-// import { NO_ERRORS_SCHEMA } from '@angular/core';
-// import { MDBBootstrapModule } from 'angular-bootstrap-md';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [
@@ -21,11 +21,11 @@ import { MemeapiComponent } from './memeapi/memeapi.component';
     AppRoutingModule,
     StreamsModule,
     BrowserModule,
-    // MDBBootstrapModule.forRoot(),
-    // BrowserAnimationsModule,
+    MDBBootstrapModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],
-  // schemas: [NO_ERRORS_SCHEMA]
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }

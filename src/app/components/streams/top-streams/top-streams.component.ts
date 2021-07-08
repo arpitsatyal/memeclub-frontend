@@ -15,13 +15,14 @@ export class TopStreamsComponent implements OnInit {
   socket
   topPosts = []
   user
+
   constructor(
     private postService: PostService,
     private tokenService: TokenService,
     private moment: MomentService
   ) {
     this.socket = io(environment.server)
-   }
+  }
 
   ngOnInit(): void {
     this.user = this.tokenService.GetPayload()
@@ -31,15 +32,14 @@ export class TopStreamsComponent implements OnInit {
 
   AllPosts() {
     this.postService.getAllPosts().subscribe((posts: any) => {
-      console.log(posts)
-      this.topPosts = posts.topPosts
+      posts.arr.forEach(p => this.topPosts.push(p.post))
     },
-     err => console.log(err))
+      err => console.log(err))
   }
   timeFromNow(time) { return this.moment.timeFromNow(time) }
 
   like(post) {
-    this.postService.addLike(post).subscribe(() =>  this.socket.emit('refresh', {}), err => console.log(err))
+    this.postService.addLike(post).subscribe(() => this.socket.emit('refresh', {}), err => console.log(err))
   }
 
   checkInLikesArray(arr, username) {

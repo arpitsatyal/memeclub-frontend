@@ -15,6 +15,7 @@ export class PostsFormComponent implements OnInit {
   uploader: FileUploader = new FileUploader({ url: URL, disableMultipart: true })
   postForm: FormGroup
   socket
+  err = false
   selectedFile
   constructor(
     private formBuilder: FormBuilder,
@@ -61,9 +62,7 @@ export class PostsFormComponent implements OnInit {
     this.postService.createPost(body).subscribe(() => {
       this.socket.emit('refresh', {})
       this.postForm.reset()
-    }, err => {
-      console.log(err)
-    })
+    }, err => this.err = true)
   }
   
 }

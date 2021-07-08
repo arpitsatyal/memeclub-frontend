@@ -22,5 +22,7 @@ export class ImageService extends BaseService {
     changePFP(img) {
         return this.http.post(this.url + 'upload-PFP', { img }, this.setUpHeaders(this.token))
     }
-
+    apiMeme() {
+        return this.http.get(this.url + 'apiMeme', this.setUpHeaders(this.token))
+    }
 }

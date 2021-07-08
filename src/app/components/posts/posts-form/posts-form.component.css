@@ -20,3 +20,7 @@ form {
 .file-field input[type="file"] {
 width: 70% !important;
 }
+
+.popup {
+    font-weight: bold;
+}

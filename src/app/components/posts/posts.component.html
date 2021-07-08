@@ -45,6 +45,9 @@
     <div id="modal" class="modal">
         <div class="modal-content">
             <h4>Edit
+                <input type="file" 
+                ng2FileSelect [uploader]="uploader"
+                (onFileSelected)="onFileSelected($event)">
                 <button class="secondary-content deleteBtn btn" (click)="deletePost()">delete</button>
             </h4>
             <p *ngIf="clickedPost">{{clickedPost.post }}</p>

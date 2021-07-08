@@ -23,6 +23,7 @@ export class followersComponent implements OnInit {
   }
   ngOnInit() {
     this.user = this.tokenService.GetPayload()
+    // console.log(this.user)
     this.GetUser()
     this.socket.on('refreshPage', () => this.GetUser())
   }
