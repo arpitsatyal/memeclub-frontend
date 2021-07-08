@@ -68,6 +68,8 @@ export class PostsComponent implements OnInit {
   }
   openEditModal(post) {
     this.clickedPost = post
+    console.log('clicked post', this.clickedPost)
+
   }
   readAsBase64(file) {
     let reader = new FileReader()
@@ -88,12 +90,12 @@ export class PostsComponent implements OnInit {
     let body
     if(!this.selectedFile) {
       body = {
-        id: this.clickedPost._id,
+        PostId: this.clickedPost._id,
         post: this.editForm.value.editedPost 
       }
     } else {
       body = {
-        id: this.clickedPost._id,
+        PostId: this.clickedPost._id,
         post: this.editForm.value.editedPost,
         image: this.selectedFile
       }

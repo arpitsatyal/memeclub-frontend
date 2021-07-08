@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
     login() {
       this.loader = true
       this.authService.login(this.loginForm.value).subscribe((res: any) => {
+        console.log(res)
         this.tokenService.setToken(res.token)
         setTimeout(() => {
             this.router.navigate(['/streams'])

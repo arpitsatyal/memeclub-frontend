@@ -28,6 +28,7 @@ export class ViewUserComponent implements OnInit, AfterViewInit {
   userData
   clickedPost
   socket
+  images = []
   constructor(
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
@@ -57,6 +58,7 @@ export class ViewUserComponent implements OnInit, AfterViewInit {
       this.following = res.following
       this.followers = res.followers
       this.userData = res
+      this.images = res.images
     })
   }
 

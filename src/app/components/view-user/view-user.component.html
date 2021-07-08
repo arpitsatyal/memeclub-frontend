@@ -1,35 +1,17 @@
 <app-toolbar></app-toolbar>
 
-<!-- <div class="container">
-    <div class="col s12 m12 l10">
-        <ul class="tabs">
-            <li class="tab col s4" (click)="changeTab('posts')">
-                <a href="" class="active">
-                    posts by
-                </a>
-            </li>
-             <li class="tab col s4" (click)="changeTab('following')">
-                <p>following</p>
-            </li>
-            <li class="tab col s4" (click)="changeTab('followers')">
-               <p>followers</p>
-            </li> 
-        </ul>
-    </div>
-</div>  -->
-
 <div class="container" style="margin-top: 30px;">
     <div class="row">
         <div class="col s12 m4 l3">
             <div class="row">
                 <div class="col s12">
-                    <span class="title">{{user}}</span>
-                    <!-- <h2 class="cityName" *ngIf="userData.country">{{userData.country}}</h2> -->
+                    <h2 class="title" style="color: blue; font-size: medium;" >Welcome to {{user}}'s profile</h2>
                 </div>
             </div>
         </div>
- 
 <div class="col s12 m8 l9" style="background: white;">
+    <h2 class="title" style="color: blue; font-size: medium;" >{{user}}'s posts</h2>
+
     <div class="row">
         <div class="col s12">
 
@@ -61,7 +43,6 @@
     
                                     <i class="material-icons">chat</i>
                                     <span id="iconSpan">{{ post.postId.comments.length }}</span>
-            
                                 </div>
                             </div>
                         </div>
@@ -70,51 +51,13 @@
             </div>
     </div>
 </div>
-        <div class="row" *ngIf="followingTab">
-            <div class="col s12 m4 l4" *ngFor="let user of following">
-                <div class="card">
-                    <div class="card-image imgDiv">
-                        <img src="https://res.cloudinary.com/arpit7xx/image/upload/v{{user.userFollowed.picVersion}}/{{user.userFollowed.picId}}" alt="haha" class="circle">
-                    </div>
-                    <div class="card-action">
-                        <h3 class="card-title">{{ user.userFollowed.username }}</h3>
-                        <p>country</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row" *ngIf="followersTab">
-            <div class="col s12 m4 l4" *ngFor="let user of followers">
-                <div class="card">
-                    <div class="card-image imgDiv">
-                        <img src="https://res.cloudinary.com/arpit7xx/image/upload/v{{user.follower.picVersion}}/{{user.follower.picId}}" alt="haha" class="circle">
-                    </div>
-                    <div class="card-action">
-                        <h3 class="card-title">{{ user.follower.username }}</h3>
-                        <p>country</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 </div>
 
-<div class="container">
-    <div id="modal" class="modal">
-        <div class="modal-content">
-          <h4>Edit
-              <button class="secondary-content deleteBtn btn" (click)="deletePost()">delete</button>
-          </h4>
-          <p *ngIf="clickedPost">{{ clickedPost.post }}</p>
-          <form [formGroup]="editForm" novalidate>
-        <textarea formControlName="editedPost" class="materialize-textarea"></textarea>
-        <div class="modal-footer">
-            <button class="button" (click)="close()">close</button>&nbsp;
-            <button class="btn" (click)="submitPost()">save</button>
-          </div>
-    </form>
-        </div>
-      </div>
-  </div>
+<div *ngIf="images.length">
+    <h2 class="title" style="color: blue; font-size: medium;" >{{user}}'s image gallery</h2>
+<div *ngFor="let image of images">
+    <img src="https://res.cloudinary.com/arpit7xx/image/upload/v{{image.imgVersion}}/{{image.imgId}}" 
+    alt="" class="postImage">
+</div>
+</div>

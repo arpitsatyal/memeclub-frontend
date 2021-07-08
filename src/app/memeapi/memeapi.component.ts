@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ImageService } from '../services/image.service';
 
 @Component({
   selector: 'app-memeapi',
@@ -8,12 +7,20 @@ import { ImageService } from '../services/image.service';
 })
 export class MemeapiComponent implements OnInit {
   apiImgs = []
-  constructor(private imageService: ImageService) { }
+  url = 'https://api.imgflip.com/get_memes'
+
+  constructor() { }
 
   ngOnInit(): void {
     this.getImages()
   }
+  async callApi() {
+    let data = await fetch(this.url)
+    return data.json()
+  }
  getImages() {
-   this.imageService.apiMeme().subscribe((response:any) => this.apiImgs = response.apiImgs, err => console.log(err))
+   this.callApi()
+   .then(response => response.data.memes.forEach(meme => this.apiImgs.push(meme.url)))
+   .catch(err => console.log(err))
  }
 }
