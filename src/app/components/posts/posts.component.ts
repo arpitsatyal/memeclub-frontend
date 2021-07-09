@@ -1,4 +1,4 @@
-import { Component, OnInit  } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { PostService } from 'src/app/services/post.service'
 import io from 'socket.io-client'
 import { environment } from 'src/environments/environment'
@@ -51,7 +51,6 @@ export class PostsComponent implements OnInit {
   }
   AllPosts() {
     this.postService.getAllPosts().subscribe((res: any) => {
-    console.log(res.all)
       this.posts = res.all
     })
   }
@@ -117,4 +116,5 @@ export class PostsComponent implements OnInit {
     this.editForm.reset()
     M.Modal.getInstance(this.modalEl).close()
   }
+ 
 }

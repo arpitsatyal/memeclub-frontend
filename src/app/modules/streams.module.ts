@@ -5,7 +5,7 @@ import { StreamsComponent } from '../components/streams/streams.component';
 import { TokenService } from '../services/token.service';
 import { ToolbarComponent } from '../components/toolbar/toolbar.component';
 import { SidebarComponent } from '../components/sidebar/sidebar.component';
-import { PostsComponent } from '../components/posts/posts.component';
+// import { PostsComponent } from '../components/posts/posts.component';
 import { PostsFormComponent } from '../components/posts/posts-form/posts-form.component';
 import { PostService } from '../services/post.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -30,17 +30,17 @@ import { ViewUserComponent } from '../components/view-user/view-user.component';
 import { ChangePasswordComponent } from '../components/users/change-password/change-password.component'
 import {GeneratorComponent  } from './../memegenerator/memegenerator.component'
 import {ColorChromeModule } from 'ngx-color/chrome'
-import { Ng2ImgMaxModule } from 'ng2-img-max';
-import { FacebookShareComponent } from '../share/share.component';
-import { FacebookModule } from 'ngx-facebook'
 import { MDBBootstrapModule } from 'angular-bootstrap-md'; 
+import {ShareButtonsModule} from 'ngx-sharebuttons/buttons'
+import {ShareIconsModule} from 'ngx-sharebuttons/icons'
+import { MatPaginatorModule} from '@angular/material/paginator'
 
 @NgModule({
   declarations: [
     StreamsComponent,
     ToolbarComponent,
     SidebarComponent,
-    PostsComponent,
+    // PostsComponent,
     PostsFormComponent,
     CommentsComponent,
     UsersComponent,
@@ -53,8 +53,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     ImagesComponent,
     ViewUserComponent,
     ChangePasswordComponent,
-    GeneratorComponent,
-    FacebookShareComponent
+    GeneratorComponent
   ],
   imports: [
     CommonModule,
@@ -66,9 +65,12 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     RouterModule,
     FileUploadModule,
     ColorChromeModule,
-    Ng2ImgMaxModule,
-    FacebookModule,
-    MDBBootstrapModule.forRoot() 
+    MDBBootstrapModule.forRoot(),
+    ShareButtonsModule.withConfig({
+      debug: true
+    }),
+    ShareIconsModule,
+    MatPaginatorModule
   ],
   providers: [TokenService, PostService, UserService, MomentService, MessagesService,ImageService]
 })

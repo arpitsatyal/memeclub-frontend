@@ -36,11 +36,11 @@ export class LoginComponent implements OnInit {
       this.authService.login(this.loginForm.value).subscribe((res: any) => {
         console.log(res)
         this.tokenService.setToken(res.token)
-        setTimeout(() => {
-            this.router.navigate(['/streams'])
-        }, 2000)
+        localStorage.setItem('user', JSON.stringify(res.user))
+        setTimeout(() => this.router.navigate(['/streams']), 2000)
       }, err => {
         this.loader = false
+        console.log(err)
         this.errorMsg = err.error
       })
     }

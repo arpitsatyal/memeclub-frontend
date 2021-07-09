@@ -9,3 +9,6 @@
 .ankit {
     float: right;
 }
+mat-paginator {
+    margin-top: 1rem;
+    }

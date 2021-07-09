@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import {CookieService} from 'ngx-cookie-service'
 
 @Injectable({
     providedIn: 'root'
@@ -7,27 +6,20 @@ import {CookieService} from 'ngx-cookie-service'
 
 export class TokenService {
     constructor(
-        private cookieService: CookieService
     ) {
     }
 
     setToken(token) {
-        this.cookieService.set('token', token)
+        localStorage.setItem('token', token)
     }
     getToken() {
-        return this.cookieService.get('token')
+        return localStorage.getItem('token')
     }
     deleteToken() {
-        return this.cookieService.delete('token')
+        localStorage.removeItem('token')
     }
     GetPayload() {
-        let token =  this.getToken()
-        let payload 
-        if(token) {
-            payload = token.split('.')[1]
-            payload = JSON.parse(window.atob(payload))
-            // atob used to decrypt the data
-        }
-        return payload.user
+        let user = JSON.parse(localStorage.getItem('user'))
+        return user
     }
 }

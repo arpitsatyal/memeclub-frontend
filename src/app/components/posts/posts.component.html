@@ -1,3 +1,4 @@
+<div>
 <ul class="collection col s12 m12 l10" *ngFor="let post of posts">
     <li class="collection-item avatar">
         <img src="https://res.cloudinary.com/arpit7xx/image/upload/v{{post.user.picVersion}}/{{post.user.picId}}" alt=""
@@ -30,11 +31,12 @@
                     <i class="material-icons"
                         [ngClass]="(!checkInLikesArray(post.comments, user.username)) ? 'notLiked' : 'liked'"
                         routerLink="post/{{post._id}}">chat</i>
-                    <span clas="iconSpan">
+                    <span class="iconSpan">
                         {{post.comments.length}}
-                    </span>
-                    <!-- <button type="button" mdbBtn color="fb" class="waves-light" mdbWavesEffect><i class="fab fa-facebook-f left"></i>Facebook</button> -->
-                    <!-- ------------------------------ -->
+                    </span> 
+                        <share-buttons [theme]="'material-dark'" [include]="['facebook', 'twitter', 'linkedin', 'pinterest', 'reddit']" [show]="5" [size]="1"
+                        [url]="'https://res.cloudinary.com/arpit7xx/image/upload/v1625682086/jpi9os7okoxzboazmbvl'" [autoSetMeta]="false">
+                    </share-buttons>                   
                 </div>
             </div>
         </div>
@@ -45,9 +47,7 @@
     <div id="modal" class="modal">
         <div class="modal-content">
             <h4>Edit
-                <input type="file" 
-                ng2FileSelect [uploader]="uploader"
-                (onFileSelected)="onFileSelected($event)">
+                <input type="file" ng2FileSelect [uploader]="uploader" (onFileSelected)="onFileSelected($event)">
                 <button class="secondary-content deleteBtn btn" (click)="deletePost()">delete</button>
             </h4>
             <p *ngIf="clickedPost">{{clickedPost.post }}</p>
@@ -61,3 +61,5 @@
         </div>
     </div>
 </div>
+</div>
+  

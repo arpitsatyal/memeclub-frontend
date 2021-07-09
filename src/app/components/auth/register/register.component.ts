@@ -35,6 +35,7 @@ export class RegisterComponent implements OnInit {
     this.loader = true
     this.authService.register(this.registerForm.value).subscribe((res: any) => {
       this.tokenService.setToken(res.token)
+      localStorage.setItem('user', JSON.stringify(res.user))
       setTimeout(() => {
       this.router.navigate(['/streams'])
       }, 3000)
