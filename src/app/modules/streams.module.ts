@@ -5,7 +5,7 @@ import { StreamsComponent } from '../components/streams/streams.component';
 import { TokenService } from '../services/token.service';
 import { ToolbarComponent } from '../components/toolbar/toolbar.component';
 import { SidebarComponent } from '../components/sidebar/sidebar.component';
-// import { PostsComponent } from '../components/posts/posts.component';
+import { PostsComponent } from '../components/posts/posts.component';
 import { PostsFormComponent } from '../components/posts/posts-form/posts-form.component';
 import { PostService } from '../services/post.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -40,7 +40,7 @@ import { MatPaginatorModule} from '@angular/material/paginator'
     StreamsComponent,
     ToolbarComponent,
     SidebarComponent,
-    // PostsComponent,
+    PostsComponent,
     PostsFormComponent,
     CommentsComponent,
     UsersComponent,

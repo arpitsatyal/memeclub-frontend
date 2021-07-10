@@ -12,6 +12,7 @@
         </p>
     </li>
     <div class="row">
+        
         <div class="col s12">
             <div class="card">
                 <div class="card-image" *ngIf="post.imgId">
@@ -42,7 +43,11 @@
         </div>
     </div>
 </ul>
-
+<div>
+    <mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" (page)="onChangedPage($event)"
+    [pageSizeOptions]="pageSizeOptions" *ngIf="!topStreams">
+   </mat-paginator>
+</div>
 <div class="container">
     <div id="modal" class="modal">
         <div class="modal-content">

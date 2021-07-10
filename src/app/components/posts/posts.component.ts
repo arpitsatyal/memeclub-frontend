@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core'
 import { PostService } from 'src/app/services/post.service'
 import io from 'socket.io-client'
 import { environment } from 'src/environments/environment'
@@ -8,6 +8,7 @@ import { MomentService } from 'src/app/services/moment.service'
 import * as M from 'materialize-css'
 import { FormGroup, Validators, FormBuilder } from '@angular/forms'
 import { FileUploader } from 'ng2-file-upload';
+import { PageEvent } from '@angular/material/paginator'
 
 let URL = environment.backendUrl + 'upload-image'
 @Component({
@@ -24,25 +25,27 @@ export class PostsComponent implements OnInit {
   clickedPost
   modalEl
   selectedFile
-  public repoUrl:string;
-
+  totalPosts = 0
+  postsPerPage = 3
+  currentPage = 1
+  pageSizeOptions = [3, 6, 9, 12]
+  @Input() topStreams: any
   constructor(
     private postService: PostService,
     private tokenService: TokenService,
     private moment: MomentService,
     private formBuilder: FormBuilder
-  ) { 
+  ) {
     this.socket = io(environment.server)
   }
 
   ngOnInit(): void {
-     this.modalEl = document.querySelector('.modal')
+    this.modalEl = document.querySelector('.modal')
     M.Modal.init(this.modalEl, {})
     this.user = this.tokenService.GetPayload()
     this.AllPosts()
     this.socket.on('refreshPage', () => this.AllPosts())
     this.initEditForm()
-    this.repoUrl='http://www.rd.com/health/diet-weight-loss/speed-up-metabolism'
   }
   initEditForm() {
     this.editForm = this.formBuilder.group({
@@ -50,16 +53,18 @@ export class PostsComponent implements OnInit {
     })
   }
   AllPosts() {
-    this.postService.getAllPosts().subscribe((res: any) => {
+    this.postService.getAllPosts(this.postsPerPage, this.currentPage).subscribe((res: any) => {
       this.posts = res.all
+      this.totalPosts = res.totalPosts
     })
   }
 
-  timeFromNow(time) { 
-    return this.moment.timeFromNow(time) }
+  timeFromNow(time) {
+    return this.moment.timeFromNow(time)
+  }
 
   like(post) {
-    this.postService.addLike(post).subscribe(() =>  this.socket.emit('refresh', {}), err => console.log(err))
+    this.postService.addLike(post).subscribe(() => this.socket.emit('refresh', {}), err => console.log(err))
   }
 
   checkInLikesArray(arr, username) {
@@ -82,15 +87,15 @@ export class PostsComponent implements OnInit {
   onFileSelected(e) {
     let file: File = e[0]
     this.readAsBase64(file)
-    .then(result => this.selectedFile = result)
-    .catch(e => console.log(e))
+      .then(result => this.selectedFile = result)
+      .catch(e => console.log(e))
   }
   submitPost() {
     let body
-    if(!this.selectedFile) {
+    if (!this.selectedFile) {
       body = {
         PostId: this.clickedPost._id,
-        post: this.editForm.value.editedPost 
+        post: this.editForm.value.editedPost
       }
     } else {
       body = {
@@ -99,7 +104,7 @@ export class PostsComponent implements OnInit {
         image: this.selectedFile
       }
     }
-    
+
     this.postService.editPost(body).subscribe(() => {
       this.socket.emit('refresh', {})
       M.Modal.getInstance(this.modalEl).close()
@@ -116,5 +121,12 @@ export class PostsComponent implements OnInit {
     this.editForm.reset()
     M.Modal.getInstance(this.modalEl).close()
   }
- 
+  onChangedPage(pageData: PageEvent) {
+    this.currentPage = pageData.pageIndex + 1
+    this.postsPerPage = pageData.pageSize
+    this.postService.getAllPosts(this.postsPerPage, this.currentPage)
+      .subscribe((res: any) => {
+        this.posts = res.all
+      }, err => console.log(err))
+  }
 }
