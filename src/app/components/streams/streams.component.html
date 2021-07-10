@@ -18,7 +18,7 @@
                 </div>
                 <div id="streams" class="col s12" *ngIf="streams">
                     <app-posts-form></app-posts-form>
-                    <app-posts></app-posts>
+                    <app-posts [topStreams]="topStreams"></app-posts>
                 </div>
                 <div id="top" class="col s12" *ngIf="topStreams">
                     <app-top-streams></app-top-streams>
