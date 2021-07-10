@@ -57,19 +57,15 @@
 .arpit {
     width: 100%;
 }
-.xx {
-    padding-left: 200px;
-    right: 100px;
-    bottom: 10px;
-}
+
 .xd {
-    background-color: #64b5f6; /* Green */
+    background-color: black; /* Green */
     border: none;
     color: white;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    /* display: inline-block; */
     float: right;
     font-size: 16px;
     margin-bottom: 70px;
@@ -81,8 +77,13 @@
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    /* display: inline-block;  */
     float: right;
-    font-size: 16px;
     margin-bottom: 70px;
+    font-size: 16px;
+    
+}
+.form_style {
+    position: absolute;
+    right: 0;
 }

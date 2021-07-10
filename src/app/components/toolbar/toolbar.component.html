@@ -1,10 +1,34 @@
-  
-<nav class="nav-extended">
-  <div class="container">
+  <nav class="nav-extended" style="background-color: cornflowerblue;">
+  <div class="container" >
     <div class="nav-wrapper">
-      <a routerLink="/streams" class="brand-logo">Metwork</a>
+      <a routerLink="/streams" class="brand-logo">Metwork</a> 
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-      
+        <!-- ------------------------------------------------- -->
+        <div style="width:300px; float:left;">
+        <li class="dropdown-button dropdown-trigger arpit" data-target="dropdown">
+          <i class="fa fa-globe fa-1x badge"></i>
+           <span class="nav-label-icon">{{noOfUnreadNotifs}}</span>
+           <ul id="dropdown" class="dropdown-content col s12 collection arpit">
+             <li class="collection-item avatar" *ngFor="let n of notifications">
+               <img src="https://res.cloudinary.com/arpit7xx/image/upload/v{{n.senderId.picVersion}}/{{n.senderId.picId}}" alt="haha" class="circle">
+               <span [ngClass]="n.read ? 'isRead' : 'unread'">{{n.message}}</span>
+               <p class="time">{{ timeFromNow(n.created) }}</p>
+             </li>
+  
+             <li *ngIf="!notifications.length">
+              <p class="text">no notifications</p> 
+             </li>
+              <p class="secondary-content">
+                <a class="markAll btn" (click)="markAll()">Mark All As Read</a>
+              </p>
+            </ul>
+             </li>
+            <li>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </li>
+            </div>
+      <!-- ------------------------------------ -->
+      <div style="width:300px; float:right;">
         <li class="dropdown-button dropdown-trigger1 arpit" data-target="dropdown1">
             <i class="fa fa-bell fa-1x badge"></i>
              <span class="nav-label-icon circle">{{ noOfUnreadMsgs }}</span>
@@ -13,13 +37,13 @@
                (click)="gotoChatPage(chat.recieverId.username)">
                  <img src="https://res.cloudinary.com/arpit7xx/image/upload/v{{chat.recieverId.picVersion}}/{{chat.recieverId.picId}}" alt="haha" class="circle">
                  <span class="title">{{ chat.recieverId.username }}
-                   <!-- <a class="secondary-content">
+                   <a class="secondary-content">
                      {{ messageDate(chat.messageId.message[chat.messageId.message.length -1 ].createdAt) }}
-                    </a> -->
+                    </a>
                  </span> 
                  <p>
                   {{ chat.messageId.message[chat.messageId.message.length -1 ].body }}
-                  <!-- <a class="secondary-content" 
+                  <a class="secondary-content" 
                   *ngIf="!chat.messageId.message[chat.messageId.message.length -1 ].isRead
                   && chat.recieverId.username !== chat.messageId.message[chat.messageId.message.length -1 ].recieverName">
                     <i class="material-icons">brightness_1</i>
@@ -27,7 +51,7 @@
                   <a class="secondary-content"
                   *ngIf="chat.messageId.message[chat.messageId.message.length -1 ].isRead">
                     <i class="material-icons">panorama_fish_eye</i>
-                  </a> -->
+                  </a> 
                  </p>
                </li>
     
@@ -39,7 +63,8 @@
                 </p>
               </ul>
                </li>
-      <li class="xx"><a (click)="logout()">Logout</a></li>
+              </div>
+      <li class="form_style"><a (click)="logout()">Logout</a></li>
                
       </ul>
     </div>
