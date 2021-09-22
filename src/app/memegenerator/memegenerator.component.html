@@ -25,14 +25,14 @@
                                 <input type="text" class="form-control" name="caption" [(ngModel)]="caption" (keyup)="drawText()">
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
+                                <div class="col-md-6" id="parent">
+                                    <div class="form-group" id="left">
                                         <label for="">text color</label>
                                         <color-chrome (onChangeComplete)="canvasTextColor($event)"></color-chrome>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group">
+                                    <div class="form-group" id="right">
                                         <label for="">background color</label>
                                         <color-chrome (onChangeComplete)="canvasBgColor($event)"></color-chrome>
                                     </div>
