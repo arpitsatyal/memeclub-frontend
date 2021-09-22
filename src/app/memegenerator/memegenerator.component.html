@@ -2,9 +2,9 @@
 <a routerLink="/streams" class="anurag">Go Back</a>
 
 <div class="app">
-    <div class="container">
+    <div class="container" id="parent">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6" id="left">
                 <div class="card drop-shadow">
                     <div class="card-body">
                         <form>
@@ -25,14 +25,14 @@
                                 <input type="text" class="form-control" name="caption" [(ngModel)]="caption" (keyup)="drawText()">
                             </div>
                             <div class="row">
-                                <div class="col-md-6" id="parent">
-                                    <div class="form-group" id="left">
+                                <div class="col-md-6">
+                                    <div class="form-group">
                                         <label for="">text color</label>
                                         <color-chrome (onChangeComplete)="canvasTextColor($event)"></color-chrome>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group" id="right">
+                                    <div class="form-group">
                                         <label for="">background color</label>
                                         <color-chrome (onChangeComplete)="canvasBgColor($event)"></color-chrome>
                                     </div>
@@ -44,7 +44,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" id="right">
                 <canvas class="drop-shadow" #memeCanvas width="700" height="800" style="background-color: #f9f9fd;">
 
                 </canvas>
