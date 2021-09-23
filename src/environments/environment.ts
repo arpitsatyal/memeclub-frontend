@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  backendUrl: 'https://memeclub.herokuapp.com/api/',
-  server: 'https://memeclub.herokuapp.com'
+  backendUrl: 'http://localhost:8080/api/',
+  server: 'http://localhost:8080'
 };
 
 /*
