@@ -34,6 +34,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {ShareButtonsModule} from 'ngx-sharebuttons/buttons'
 import {ShareIconsModule} from 'ngx-sharebuttons/icons'
 import { MatPaginatorModule} from '@angular/material/paginator'
+import { NgxSpinnerModule } from "ngx-spinner";
+
 
 @NgModule({
   declarations: [
@@ -64,6 +66,7 @@ import { MatPaginatorModule} from '@angular/material/paginator'
     NgxAutoScrollModule,
     RouterModule,
     FileUploadModule,
+    NgxSpinnerModule,
     ColorChromeModule,
     MDBBootstrapModule.forRoot(),
     ShareButtonsModule.withConfig({

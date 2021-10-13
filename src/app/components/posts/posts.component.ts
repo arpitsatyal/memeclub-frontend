@@ -9,6 +9,7 @@ import * as M from 'materialize-css'
 import { FormGroup, Validators, FormBuilder } from '@angular/forms'
 import { FileUploader } from 'ng2-file-upload';
 import { PageEvent } from '@angular/material/paginator'
+import { NgxSpinnerService } from "ngx-spinner";
 
 let URL = environment.backendUrl + 'upload-image'
 @Component({
@@ -29,12 +30,15 @@ export class PostsComponent implements OnInit {
   postsPerPage = 3
   currentPage = 1
   pageSizeOptions = [3, 6, 9, 12]
+  postHasCome = false
   @Input() topStreams: any
+
   constructor(
     private postService: PostService,
     private tokenService: TokenService,
     private moment: MomentService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private spinner: NgxSpinnerService
   ) {
     this.socket = io(environment.server)
   }
@@ -53,7 +57,10 @@ export class PostsComponent implements OnInit {
     })
   }
   AllPosts() {
+    this.spinner.show()
     this.postService.getAllPosts(this.postsPerPage, this.currentPage).subscribe((res: any) => {
+      this.postHasCome = true
+      this.spinner.hide()
       this.posts = res.all
       this.totalPosts = res.totalPosts
     })

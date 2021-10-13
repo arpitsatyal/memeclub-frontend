@@ -9,8 +9,8 @@ import { MemeapiComponent } from './memeapi/memeapi.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-
 import {FacebookShareComponent } from './share/share.component'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +24,7 @@ import {FacebookShareComponent } from './share/share.component'
     StreamsModule,
     BrowserModule,
     MDBBootstrapModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],
